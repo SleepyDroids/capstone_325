@@ -4,6 +4,35 @@ import Character from "../models/Character.js";
 const router = express.Router();
 
 router
+  .route("/:id")
+  .get(async (req, res) => {
+    try {
+      // Find a character by their ID
+      const result = await Character.findById(req.params.id);
+      console.log(result);
+      res.status(200).json(result);
+    } catch (e) {
+      console.log(e);
+      res.json({ error: e.message });
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const deletedCharacter = await Character.findByIdAndDelete(req.params.id);
+      if (!deletedCharacter) {
+        return res
+          .status(404)
+          .json({ error: "No Character with that id exists." });
+      }
+      console.log("Character Doc Deleted:", deletedCharacter._id);
+      res.status(200).json({ "Character Doc Deleted": deletedCharacter._id });
+    } catch (e) {
+      console.log(e);
+      res.json({ error: e.message });
+    }
+  });
+
+router
   .route("/")
   .post(async (req, res) => {
     try {
@@ -31,7 +60,7 @@ router
       if (!name || !race || !charClass) {
         return res
           .status(400)
-          .json({ message: "Name, race and class are required entries." });
+          .json({ message: "Name, race and class are required entries.wq" });
       }
 
       const newCharacter = await Character.create({
@@ -44,7 +73,7 @@ router
         notes,
       });
 
-      console.log(newCharacter)
+      console.log(newCharacter);
       //   const newCharacter = new Character(req.body);
       //   console.log(req.body);
       //   const result = await newCharacter.save();
