@@ -1,0 +1,45 @@
+import express from "express";
+import Character from "../models/Character";
+
+const router = express.Router();
+
+router
+  .route("/")
+  .post(async (req, res) => {
+    try {
+    /*
+    Based off my schema, the req.body needs to include: 
+    name, race, charClass --< required
+    background: optional
+    level: optional, default is 1
+    stats: { 
+    str: optional for now, default is 10,
+    dex: optional for now, default is 10,
+    con: optional for now, default is 10,
+    int: optional for now, default is 10,
+    wis: optional for now, default is 10,
+    cha: optional for now, default is 10 
+    }
+    notes: optional
+    */
+      const newCharacter = new Character(req.body);
+      console.log(req.body);
+      const result = await newCharacter.save();
+      console.log(result);
+      res.status(200).json(result);
+    } catch (e) {
+      console.log(e);
+      res.json({ error: e.message });
+    }
+  })
+  .get(async (req, res) => {
+    try {
+      const result = await Character.find({});
+      res.status(200).json(result);
+    } catch (e) {
+      console.log(e);
+      res.json({ error: e.message });
+    }
+  });
+
+export default router;

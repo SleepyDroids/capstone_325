@@ -32,7 +32,7 @@ const characterSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
     race: { type: String, required: true },
-    class: { type: String, required: true },
+    charClass: { type: String, required: true },
     background: { type: String },
     level: { type: Number, default: 1 },
     stats: { type: statsSchema, default: () => ({}) },
