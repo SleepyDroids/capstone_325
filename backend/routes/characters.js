@@ -16,6 +16,37 @@ router
       res.json({ error: e.message });
     }
   })
+  .put(async (req, res) => {
+    try {
+      const originalDoc = req.params.id;
+      const { name, race, charClass, background, level, stats, notes } =
+        req.body;
+
+      if (!name || !race || !charClass) {
+        return res
+          .status(400)
+          .json({ message: "Name, race and class are required entries." });
+      }
+
+      const replacementDoc = await Character.replaceOne(
+        { _id: originalDoc },
+        {
+          name,
+          race,
+          charClass,
+          background,
+          level,
+          stats,
+          notes,
+        }
+      );
+      console.log("Updated character:" + replacementDoc);
+      res.status(200).json(replacementDoc);
+    } catch (e) {
+      console.log(e);
+      res.json({ error: e.message });
+    }
+  })
   .delete(async (req, res) => {
     try {
       const deletedCharacter = await Character.findByIdAndDelete(req.params.id);
@@ -60,7 +91,7 @@ router
       if (!name || !race || !charClass) {
         return res
           .status(400)
-          .json({ message: "Name, race and class are required entries.wq" });
+          .json({ message: "Name, race and class are required entries." });
       }
 
       const newCharacter = await Character.create({
