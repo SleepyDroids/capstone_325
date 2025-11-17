@@ -1,5 +1,5 @@
 import express from "express";
-import Character from "../models/Character";
+import Character from "../models/Character.js";
 
 const router = express.Router();
 
@@ -7,9 +7,9 @@ router
   .route("/")
   .post(async (req, res) => {
     try {
-    /*
+      /*
     Based off my schema, the req.body needs to include: 
-    name, race, charClass --< required
+    name, race, charClass --> required
     background: optional
     level: optional, default is 1
     stats: { 
@@ -22,14 +22,37 @@ router
     }
     notes: optional
     */
-      const newCharacter = new Character(req.body);
-      console.log(req.body);
-      const result = await newCharacter.save();
-      console.log(result);
-      res.status(200).json(result);
+
+      // Destructuring values from the req.body
+      const { name, race, charClass, background, level, stats, notes } =
+        req.body;
+
+      // Additional validation in my server as these are required fields by the schema
+      if (!name || !race || !charClass) {
+        return res
+          .status(400)
+          .json({ message: "Name, race and class are required strings" });
+      }
+
+      const newCharacter = await Character.create({
+        name,
+        race,
+        charClass,
+        background,
+        level,
+        stats,
+        notes,
+      });
+
+      console.log(newCharacter)
+      //   const newCharacter = new Character(req.body);
+      //   console.log(req.body);
+      //   const result = await newCharacter.save();
+      //   console.log(result);
+      res.status(201).json(newCharacter); // ok!
     } catch (e) {
       console.log(e);
-      res.json({ error: e.message });
+      res.status(500).json({ error: e.message });
     }
   })
   .get(async (req, res) => {

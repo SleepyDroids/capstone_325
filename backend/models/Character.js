@@ -35,6 +35,9 @@ const characterSchema = mongoose.Schema(
     charClass: { type: String, required: true },
     background: { type: String },
     level: { type: Number, default: 1 },
+    // If no stats are provided, Mongoose starts stats as a fresh object,
+    // then applies the defaults from statsSchema so each new character
+    // gets its own stats block instead of sharing one.
     stats: { type: statsSchema, default: () => ({}) },
     notes: { type: String },
   },
@@ -42,5 +45,3 @@ const characterSchema = mongoose.Schema(
 );
 
 export default mongoose.model("Character", characterSchema);
-
-

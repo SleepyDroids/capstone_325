@@ -1,0 +1,16 @@
+{
+    "name": "Bob the Builder",
+    "race": "tiefling",
+    "charClass": "druid",
+    "background": "Sage",
+    "level": 20,
+    "stats": {
+    "str": 20,
+    "dex": 20,
+    "con": 20,
+    "int": 20,
+    "wis": 20,
+    "cha": 20
+    },
+    "notes": "Can speak french. Is sometimes a cat. Great as defeating space invaders."
+}

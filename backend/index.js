@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(cors())
 
 // router
-app.use("/characters", characterRouter);
+app.use("/api/characters", characterRouter);
 
 // main / default API route
 app.get("/api", (req, res) => {
