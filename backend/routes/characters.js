@@ -31,7 +31,7 @@ router
       if (!name || !race || !charClass) {
         return res
           .status(400)
-          .json({ message: "Name, race and class are required strings" });
+          .json({ message: "Name, race and class are required entries." });
       }
 
       const newCharacter = await Character.create({
