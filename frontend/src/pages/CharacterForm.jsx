@@ -1,4 +1,5 @@
-import { useState, useReducer, useRef, useFormStatus } from "react";
+import { useState, useReducer, useRef } from "react";
+import { useFormStatus } from "react-dom";
 import { useMultipageForm } from "../useMultipageForm";
 
 import { BASE_URL } from "../../services/character-api.js";
@@ -29,15 +30,15 @@ export default function CharacterForm({ data, newCharacter }) {
   //   <div>Page 3</div>,
   // ]);
 
-  const [baseInfo, setBaseInfo] = useState({
+  const initialBase = {
     name: "",
     race: "",
     charClass: "",
     background: "",
     level: 1,
-  });
+  };
 
-  const [statsInfo, setStatsInfo] = useState({
+  const initialStats = {
     stats: {
       str: 1,
       dex: 1,
@@ -46,11 +47,15 @@ export default function CharacterForm({ data, newCharacter }) {
       wis: 1,
       cha: 1,
     },
-  });
+  };
 
-  const [notesInfo, setNotesInfo] = useState({
+  const initialNotes = {
     notes: "",
-  });
+  };
+
+  const [baseInfo, setBaseInfo] = useState(initialBase);
+  const [statsInfo, setStatsInfo] = useState(initialStats);
+  const [notesInfo, setNotesInfo] = useState(initialNotes);
 
   function inputBaseInfo(inputs) {
     setBaseInfo((prev) => {
@@ -59,8 +64,9 @@ export default function CharacterForm({ data, newCharacter }) {
   }
 
   function inputStatsInfo(inputs) {
+    console.log(inputs);
     setStatsInfo((prev) => {
-      return { ...prev, stats: { ...inputs } };
+      return { ...prev, stats: { ...prev.stats, ...inputs } };
     });
   }
 
@@ -69,13 +75,8 @@ export default function CharacterForm({ data, newCharacter }) {
       return { ...prev, ...input };
     });
   }
-
-  // submit function will be built in here for now for convenience
   async function handleNewSubmit(e) {
     e.preventDefault();
-    console.log("Character has been submitted to the DB");
-    // don't know if inputRef or controlled inputs are best in this instance?
-
     const character = {
       name: baseInfo.name,
       race: baseInfo.race,
@@ -101,13 +102,14 @@ export default function CharacterForm({ data, newCharacter }) {
           "Content-Type": "application/json",
         },
       });
-
       const newCharacter = await response.json();
-
-      console.log(newCharacter);
+      // console.log(newCharacter);
     } catch (e) {
       console.log(e);
     }
+    setBaseInfo(initialBase);
+    setStatsInfo(initialStats);
+    setNotesInfo(initialNotes);
   }
 
   return (
@@ -204,9 +206,7 @@ export default function CharacterForm({ data, newCharacter }) {
           <label htmlFor="stat_stre">Strength:</label>
           <input
             value={statsInfo.stats.str}
-            onChange={(e) =>
-              inputStatsInfo({ stats: { str: Number(e.target.value) } })
-            }
+            onChange={(e) => inputStatsInfo({ str: e.target.value })}
             className="input-stat"
             type="number"
             id="stat_stre"
@@ -217,9 +217,7 @@ export default function CharacterForm({ data, newCharacter }) {
           <label htmlFor="stat_dex">Dexterity:</label>
           <input
             value={statsInfo.stats.dex}
-            onChange={(e) =>
-              inputStatsInfo({ stats: { dex: Number(e.target.value) } })
-            }
+            onChange={(e) => inputStatsInfo({ dex: e.target.value })}
             className="input-stat"
             type="number"
             id="stat_dex"
@@ -230,9 +228,7 @@ export default function CharacterForm({ data, newCharacter }) {
           <label htmlFor="stat_con">Constitution:</label>
           <input
             value={statsInfo.stats.con}
-            onChange={(e) =>
-              inputStatsInfo({ stats: { con: Number(e.target.value) } })
-            }
+            onChange={(e) => inputStatsInfo({ con: e.target.value })}
             className="input-stat"
             type="number"
             id="stat_con"
@@ -243,9 +239,7 @@ export default function CharacterForm({ data, newCharacter }) {
           <label htmlFor="stat_int">Intelligence:</label>
           <input
             value={statsInfo.stats.int}
-            onChange={(e) =>
-              inputStatsInfo({ stats: { int: Number(e.target.value) } })
-            }
+            onChange={(e) => inputStatsInfo({ int: e.target.value })}
             className="input-stat"
             type="number"
             id="stat_int"
@@ -256,9 +250,7 @@ export default function CharacterForm({ data, newCharacter }) {
           <label htmlFor="stat_wis">Wisdom:</label>
           <input
             value={statsInfo.stats.wis}
-            onChange={(e) =>
-              inputStatsInfo({ stats: { wis: Number(e.target.value) } })
-            }
+            onChange={(e) => inputStatsInfo({ wis: e.target.value })}
             className="input-stat"
             type="number"
             id="stat_wis"
@@ -269,15 +261,16 @@ export default function CharacterForm({ data, newCharacter }) {
           <label htmlFor="stat_cha">Charisma:</label>
           <input
             value={statsInfo.stats.cha}
-            onChange={(e) =>
-              inputStatsInfo({ stats: { cha: Number(e.target.value) } })
-            }
+            onChange={(e) => inputStatsInfo({ cha: e.target.value })}
             className="input-stat"
             type="number"
             id="stat_cha"
             name="stat_cha"
             min="1"
           />
+          <button type="button" className="randomBtn">
+            Randomize Stats?
+          </button>
         </div>
 
         <div className="form-notes">
@@ -309,3 +302,11 @@ export default function CharacterForm({ data, newCharacter }) {
     </div>
   );
 }
+
+// function Submit() {
+//   const status = useFormStatus();
+//   console.log(status.data);
+//   return (
+
+//   );
+// }
