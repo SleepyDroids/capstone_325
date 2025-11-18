@@ -17,7 +17,25 @@ Would be nice, stretch goals:
 */
 
 export default function CharacterForm({ data, newCharacter }) {
-// useState is about to get crazy for this form, currently have 12 inputs to account for
+  // useState for paginated form / alternatively 3 different useStates for different pieces of the data
+  // onChange checks the values
+
+  const [baseInfo, setBaseInfo] = useState({
+    name: "",
+    race: "",
+    class: "",
+  });
+  const [statsInfo, setStatsInfo] = useState({
+    str: 1,
+    dex: 1,
+    con: 1,
+    int: 1,
+    wis: 1,
+    cha: 1,
+  });
+  const [notesInfo, setNotesInfo] = useState({
+    notes: "",
+  });
 
   return (
     <div className="form-container">
@@ -48,7 +66,12 @@ export default function CharacterForm({ data, newCharacter }) {
           </select>
 
           <label htmlFor="charClass">Class:</label>
-          <select className="input-class" name="charClass" id="charClass" required>
+          <select
+            className="input-class"
+            name="charClass"
+            id="charClass"
+            required
+          >
             <option value="Barbarian">Barbarian</option>
             <option value="Bard">Bard</option>
             <option value="Cleric">Cleric</option>
@@ -75,29 +98,72 @@ export default function CharacterForm({ data, newCharacter }) {
 
         <div className="form-level">
           <label htmlFor="level">Level (1-20):</label>
-          <input className="input-level" type="number" id="level" name="level" min="1" max="20" />
+          <input
+            className="input-level"
+            type="number"
+            id="level"
+            name="level"
+            min="1"
+            max="20"
+          />
         </div>
 
         <div className="form-stats">
           <h3>Stats</h3>
 
           <label htmlFor="stat_stre">Strength:</label>
-          <input className="input-stat" type="number" id="stat_stre" name="stat_stre" min="1" />
+          <input
+            className="input-stat"
+            type="number"
+            id="stat_stre"
+            name="stat_str"
+            min="1"
+          />
 
           <label htmlFor="stat_dex">Dexterity:</label>
-          <input className="input-stat" type="number" id="stat_dex" name="stat_dex" min="1" />
+          <input
+            className="input-stat"
+            type="number"
+            id="stat_dex"
+            name="stat_dex"
+            min="1"
+          />
 
           <label htmlFor="stat_con">Constitution:</label>
-          <input className="input-stat" type="number" id="stat_con" name="stat_con" min="1" />
+          <input
+            className="input-stat"
+            type="number"
+            id="stat_con"
+            name="stat_con"
+            min="1"
+          />
 
           <label htmlFor="stat_int">Intelligence:</label>
-          <input className="input-stat" type="number" id="stat_int" name="stat_int" min="1" />
+          <input
+            className="input-stat"
+            type="number"
+            id="stat_int"
+            name="stat_int"
+            min="1"
+          />
 
           <label htmlFor="stat_wis">Wisdom:</label>
-          <input className="input-stat" type="number" id="stat_wis" name="stat_wis" min="1" />
+          <input
+            className="input-stat"
+            type="number"
+            id="stat_wis"
+            name="stat_wis"
+            min="1"
+          />
 
           <label htmlFor="stat_cha">Charisma:</label>
-          <input className="input-stat" type="number" id="stat_cha" name="stat_cha" min="1" />
+          <input
+            className="input-stat"
+            type="number"
+            id="stat_cha"
+            name="stat_cha"
+            min="1"
+          />
         </div>
 
         <div className="form-notes">
@@ -105,13 +171,22 @@ export default function CharacterForm({ data, newCharacter }) {
             <h3>Notes / Additional Details</h3>
           </label>
 
-          <textarea className="input-notes" id="notes" name="notes" defaultValue={"Any additional details, campaign notes can go in here."} rows="5" cols="33">
-           
-          </textarea>
+          <textarea
+            className="input-notes"
+            id="notes"
+            name="notes"
+            defaultValue={
+              "Any additional details, campaign notes can go in here."
+            }
+            rows="5"
+            cols="33"
+          ></textarea>
         </div>
 
         <div className="form-subimt">
-          <button className="clearBtn" disabled>Clear all fields</button>
+          <button className="clearBtn" disabled>
+            Clear all fields
+          </button>
           <button className="submitBtn">Create Character</button>
         </div>
       </form>
