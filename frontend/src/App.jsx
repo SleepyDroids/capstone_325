@@ -12,6 +12,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import CharacterList from "./pages/CharacterList.jsx";
 import CharacterForm from "./pages/CharacterForm.jsx";
+import CharacterDetails from "./pages/CharacterDetails.jsx"
 import Homepage from "./components/Homepage";
 
 function App() {
@@ -47,6 +48,13 @@ function App() {
     return <div>Error: {error.message}</div>;
   }
 
+  // submit function will be built in here for now for convenience 
+  async function handleNewSubmit(e) {
+    e.preventDefault();
+    console.log('Character has been submitted to the DB');
+    // don't know if inputRef or controlled inputs are best in this instance? 
+  }
+
   return (
     <>
       <Header />
@@ -57,8 +65,12 @@ function App() {
           element={<CharacterList data={characters} />}
         />
         <Route
+          path="/characters/details/:name"
+          element={<CharacterDetails data={characters} />}
+        />
+        <Route
           path="/characters/new"
-          element={<CharacterForm data={characters} />}
+          element={<CharacterForm data={characters} newCharacter={handleNewSubmit} />}
         />
       </Routes>
       <Footer />
