@@ -1,8 +1,14 @@
-
 // Importing routes
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, useNavigate } from "react-router";
+
+// Importing pages / components
+import CharacterList from "../pages/CharacterList.jsx"
+import CharacterForm from "../pages/CharacterForm.jsx"
 
 export default function Homepage() {
+
+  const navigate = useNavigate()
+
   return (
     <main>
       <div id="container">
@@ -19,8 +25,8 @@ export default function Homepage() {
 
     <div className="main-btns">
 
-      <button>View all characters</button> 
-      <button>Create a character</button>
+      <button className="mainBtn" onClick={() => navigate("/characters") }>View all characters</button> 
+      <button className="mainBtn">Create a character</button>
     </div>
 
       </div>

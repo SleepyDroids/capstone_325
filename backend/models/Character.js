@@ -33,7 +33,7 @@ const statsSchema = mongoose.Schema(
 
 const characterSchema = mongoose.Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true, unique: true },
     race: { type: String, required: true },
     charClass: { type: String, required: true },
     background: { type: String },

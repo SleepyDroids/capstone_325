@@ -1,8 +1,10 @@
-export default function CharacterList() {
+import CharacterCard from "./CharacterCard"
+
+export default function CharacterList({ data }) {
 
   return (
-    <>
-    Character list will go here (pulled from my database)
-    </>
+    <div className="character-container">
+      <CharacterCard data={data} />
+      </div>
   )
 }
