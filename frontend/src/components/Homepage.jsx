@@ -26,7 +26,7 @@ export default function Homepage() {
     <div className="main-btns">
 
       <button className="mainBtn" onClick={() => navigate("/characters") }>View all characters</button> 
-      <button className="mainBtn">Create a character</button>
+      <button className="mainBtn" onClick={() => navigate("/characters/new") }>Create a character</button>
     </div>
 
       </div>

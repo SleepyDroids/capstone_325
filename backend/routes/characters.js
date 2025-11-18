@@ -1,5 +1,4 @@
 import express from "express";
-import Character from "../models/Character.js";
 
 const router = express.Router();
 

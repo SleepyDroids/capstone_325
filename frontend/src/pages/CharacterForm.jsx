@@ -6,7 +6,7 @@ export default function CharacterForm({ data }) {
     <div className="form-container">
       <form>
     <div className="form-character">
-     <label for="name">Character Name:</label> <input type="text" id="name" name="character_name" /> <br />
+     <label htmlFor="name">Character Name:</label> <input type="text" id="name" name="character_name" /> <br />
      
     </div>
 

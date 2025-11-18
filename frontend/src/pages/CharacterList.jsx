@@ -6,10 +6,9 @@ export default function CharacterList({ data }) {
 
   return (
     <div className="character-container">
-
-      {/* {data.map((c) => {
-        <CharacterCard data={c} key={c._id} />
-      })} */}
+      {data.map((c) => {
+        return <CharacterCard data={c} key={c._id} />
+      })}
       </div>
   )
 }

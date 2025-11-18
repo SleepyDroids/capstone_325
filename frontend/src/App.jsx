@@ -16,15 +16,36 @@ import Homepage from "./components/Homepage";
 
 function App() {
   const [characters, setCharacters] = useState(null);
-  const [isLoading, setisLoading] = useState(true);
-  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const lookAtTheseDudes = async () => setCharacters(await getAllCharacters());
-    lookAtTheseDudes();
-  }, [])
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        setCharacters(await getAllCharacters());
+      } catch (e) {
+        setError(e);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
-  console.log(characters)
+  // console.log(characters);
+
+  if (isLoading) {
+    return (
+      <div>
+        Loading, please wait. Will replace this later with something cleaner.
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <>
@@ -35,7 +56,10 @@ function App() {
           path="/characters"
           element={<CharacterList data={characters} />}
         />
-        <Route path="/characters/new" element={<CharacterForm data={characters} />} />
+        <Route
+          path="/characters/new"
+          element={<CharacterForm data={characters} />}
+        />
       </Routes>
       <Footer />
     </>

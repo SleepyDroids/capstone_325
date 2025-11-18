@@ -47,12 +47,6 @@ const createCharacter = async (req, res) => {
       stats,
       notes,
     });
-
-    console.log(newCharacter);
-    //   const newCharacter = new Character(req.body);
-    //   console.log(req.body);
-    //   const result = await newCharacter.save();
-    //   console.log(result);
     res.status(201).json(newCharacter); // ok!
   } catch (e) {
     console.log(e);
