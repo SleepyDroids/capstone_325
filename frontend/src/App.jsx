@@ -12,18 +12,16 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import CharacterList from "./pages/CharacterList.jsx";
 import CharacterForm from "./pages/CharacterForm.jsx";
-
-
-
 import Homepage from "./components/Homepage";
 
 function App() {
   const [characters, setCharacters] = useState(null);
-  const [isLoading, setisLoading] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    const getCharacters = async () => setCharacters(await getAllCharacters());
-    getCharacters();
+    const lookAtTheseDudes = async () => setCharacters(await getAllCharacters());
+    lookAtTheseDudes();
   }, [])
 
   console.log(characters)
