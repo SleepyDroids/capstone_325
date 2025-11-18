@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useFormStatus } from "react";
 
 /*
 MVP Needs to be done: 
@@ -13,6 +13,7 @@ Would be nice, stretch goals:
        I need to make sure my number values are still there
 - Would also like to implement an "isActive" toggle on a character but will ONLY consider that once baseline form POST request works
 - Pop up message or page redirect when a submission is successful???
+    a. useFormStatus hook to display the data that has been sent to the user back to the server?
 */
 
 export default function CharacterForm({ data, newCharacter }) {
@@ -110,6 +111,7 @@ export default function CharacterForm({ data, newCharacter }) {
         </div>
 
         <div className="form-subimt">
+          <button className="clearBtn" disabled>Clear all fields</button>
           <button className="submitBtn">Create Character</button>
         </div>
       </form>
