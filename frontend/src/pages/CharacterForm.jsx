@@ -1,8 +1,25 @@
-export default function CharacterForm() {
+import { useState, useRef } from "react";
+
+export default function CharacterForm({ data }) {
 
   return (
-    <>
-    Full character submission form will go here
-    </>
+    <div className="form-container">
+      <form>
+    <div className="form-character">
+     <label for="name">Character Name:</label> <input type="text" id="name" name="character_name" /> <br />
+     
+    </div>
+
+    <div className="form-stats">
+      Stat block form with randommizer for stats
+    </div>
+
+    <div className="form-subimt">
+      <submit>Create Character</submit>
+    </div>
+
+      </form>
+
+    </div>
   )
 }

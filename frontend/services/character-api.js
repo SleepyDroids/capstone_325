@@ -5,7 +5,7 @@ export default async function getAllCharacters() {
   try {
     const response = await fetch(`${BASE_URL}/characters`);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (e) {
     console.error(e);

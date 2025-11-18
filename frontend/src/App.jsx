@@ -13,12 +13,20 @@ import Footer from "./components/Footer.jsx";
 import CharacterList from "./pages/CharacterList.jsx";
 import CharacterForm from "./pages/CharacterForm.jsx";
 
-console.log(getAllCharacters);
+
 
 import Homepage from "./components/Homepage";
 
 function App() {
   const [characters, setCharacters] = useState(null);
+  const [isLoading, setisLoading] = useState([]);
+
+  useEffect(() => {
+    const getCharacters = async () => setCharacters(await getAllCharacters());
+    getCharacters();
+  }, [])
+
+  console.log(characters)
 
   return (
     <>
@@ -29,7 +37,7 @@ function App() {
           path="/characters"
           element={<CharacterList data={characters} />}
         />
-        <Route path="/characters/create" element={<CharacterForm />} />
+        <Route path="/characters/new" element={<CharacterForm data={characters} />} />
       </Routes>
       <Footer />
     </>
