@@ -48,29 +48,7 @@ function App() {
     return <div>Error: {error.message}</div>;
   }
 
-  // submit function will be built in here for now for convenience 
-  async function handleNewSubmit(e) {
-    e.preventDefault();
-    console.log('Character has been submitted to the DB');
-    // don't know if inputRef or controlled inputs are best in this instance?
-    
-    // const newCharacter = {
-    //   name: name,
-    //   race: race,
-    //   charClass: bard,
-    //   background: background,
-    //   level: 12,
-    //   stats: {
-    //     str: 1,
-    //     dex: 1,
-    //     con: 1,
-    //     int: 1,
-    //     wis: 1,
-    //     cha: 1
-    //   }
 
-    // }
-  }
 
   return (
     <>
@@ -87,7 +65,7 @@ function App() {
         />
         <Route
           path="/characters/new"
-          element={<CharacterForm data={characters} newCharacter={handleNewSubmit} />}
+          element={<CharacterForm data={characters} />}
         />
       </Routes>
       <Footer />
