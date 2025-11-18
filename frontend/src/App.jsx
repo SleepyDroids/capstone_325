@@ -1,13 +1,10 @@
-import { useState } from 'react'
+// Setting up base structure for general pages
+// can always add more components later
 
+import Homepage from "./components/Homepage";
 
 function App() {
-
-  return (
-    <>
-    Welcome to the frond end!
-    </>
-  )
+  return <Homepage />;
 }
 
-export default App
+export default App;
