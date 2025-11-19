@@ -11,11 +11,6 @@ export default function NewNotesInfoForm({ notesInfo, inputNotesInfo }) {
         className="input-notes"
         id="notes"
         name="notes"
-        // defaultValue={
-        //   "Any additional details, campaign notes can go in here."
-        // }
-        rows="5"
-        cols="33"
       ></textarea>
     </div>
   );

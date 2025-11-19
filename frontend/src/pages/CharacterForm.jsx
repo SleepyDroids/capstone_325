@@ -1,6 +1,6 @@
-import { useState, useReducer, useRef } from "react";
+import { useState } from "react";
 // import { useFormStatus } from "react-dom";
-import { useMultipageForm } from "../useMultipageForm";
+// import { useMultipageForm } from "../useMultipageForm";
 
 import { BASE_URL } from "../../services/character-api.js";
 
@@ -26,7 +26,7 @@ Would be nice, stretch goals:
     a. useFormStatus hook to display the data that has been sent to the user back to the server?
 */
 
-export default function CharacterForm({ data, newCharacter }) {
+export default function CharacterForm() {
   // useState for paginated form / alternatively 3 different useStates for different pieces of the data
   // onChange checks the values
 
@@ -70,7 +70,6 @@ export default function CharacterForm({ data, newCharacter }) {
   }
 
   function inputStatsInfo(inputs) {
-    console.log(inputs);
     setStatsInfo((prev) => {
       return { ...prev, stats: { ...prev.stats, ...inputs } };
     });
@@ -110,7 +109,7 @@ export default function CharacterForm({ data, newCharacter }) {
         },
       });
       const newCharacter = await response.json();
-      // console.log(newCharacter);
+      console.log(newCharacter);
     } catch (e) {
       console.log(e);
     }
@@ -139,11 +138,3 @@ export default function CharacterForm({ data, newCharacter }) {
     </div>
   );
 }
-
-// function Submit() {
-//   const status = useFormStatus();
-//   console.log(status.data);
-//   return (
-
-//   );
-// }

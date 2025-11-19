@@ -6,7 +6,7 @@ export default function NewStatsInfoForm({ statsInfo, inputStatsInfo }) {
       <label htmlFor="stat_stre">Strength:</label>
       <input
         value={statsInfo.stats.str}
-        onChange={(e) => inputStatsInfo({ str: e.target.value })}
+        onChange={(e) => inputStatsInfo({ str: Number(e.target.value) })}
         className="input-stat"
         type="number"
         id="stat_stre"
@@ -17,7 +17,7 @@ export default function NewStatsInfoForm({ statsInfo, inputStatsInfo }) {
       <label htmlFor="stat_dex">Dexterity:</label>
       <input
         value={statsInfo.stats.dex}
-        onChange={(e) => inputStatsInfo({ dex: e.target.value })}
+        onChange={(e) => inputStatsInfo({ dex: Number(e.target.value) })}
         className="input-stat"
         type="number"
         id="stat_dex"
@@ -28,7 +28,7 @@ export default function NewStatsInfoForm({ statsInfo, inputStatsInfo }) {
       <label htmlFor="stat_con">Constitution:</label>
       <input
         value={statsInfo.stats.con}
-        onChange={(e) => inputStatsInfo({ con: e.target.value })}
+        onChange={(e) => inputStatsInfo({ con: Number(e.target.value) })}
         className="input-stat"
         type="number"
         id="stat_con"
@@ -39,7 +39,7 @@ export default function NewStatsInfoForm({ statsInfo, inputStatsInfo }) {
       <label htmlFor="stat_int">Intelligence:</label>
       <input
         value={statsInfo.stats.int}
-        onChange={(e) => inputStatsInfo({ int: e.target.value })}
+        onChange={(e) => inputStatsInfo({ int: Number(e.target.value) })}
         className="input-stat"
         type="number"
         id="stat_int"
@@ -50,7 +50,7 @@ export default function NewStatsInfoForm({ statsInfo, inputStatsInfo }) {
       <label htmlFor="stat_wis">Wisdom:</label>
       <input
         value={statsInfo.stats.wis}
-        onChange={(e) => inputStatsInfo({ wis: e.target.value })}
+        onChange={(e) => inputStatsInfo({ wis: Number(e.target.value) })}
         className="input-stat"
         type="number"
         id="stat_wis"
@@ -61,7 +61,7 @@ export default function NewStatsInfoForm({ statsInfo, inputStatsInfo }) {
       <label htmlFor="stat_cha">Charisma:</label>
       <input
         value={statsInfo.stats.cha}
-        onChange={(e) => inputStatsInfo({ cha: e.target.value })}
+        onChange={(e) => inputStatsInfo({ cha: Number(e.target.value) })}
         className="input-stat"
         type="number"
         id="stat_cha"
@@ -69,7 +69,7 @@ export default function NewStatsInfoForm({ statsInfo, inputStatsInfo }) {
         min="1"
       />
       <button type="button" className="randomBtn">
-        Randomize Stats?
+        Randomize Stats
       </button>
     </div>
   );
