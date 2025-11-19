@@ -45,7 +45,9 @@ export default function CharacterDetails({ data }) {
 
   function inputEdits(inputs) {
     setEditValues((prev) => {
-      return { ...prev, ...inputs };
+      return { ...prev, ...inputs,
+        stats: { ...prev.stats, ...inputs.stats }
+       };
     });
   }
 
