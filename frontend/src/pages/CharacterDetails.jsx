@@ -36,7 +36,7 @@ export default function CharacterDetails({ data }) {
       notes: details.notes,
     });
     setIsEditing((prev) => !prev);
-    console.log(editValues);
+    // console.log(editValues);
   }
 
   async function handleSubmitEdit(e) {
@@ -45,9 +45,7 @@ export default function CharacterDetails({ data }) {
 
   function inputEdits(inputs) {
     setEditValues((prev) => {
-      return { ...prev, ...inputs,
-        stats: { ...prev.stats, ...inputs.stats }
-       };
+      return { ...prev, ...inputs, stats: { ...prev.stats, ...inputs.stats } };
     });
   }
 

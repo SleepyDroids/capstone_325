@@ -51,9 +51,7 @@ export default function EditFormOverlay({ data, editValues, inputEdits }) {
           <label htmlFor="stat_stre">Strength:</label>
           <input
             value={editValues.stats.str}
-            onChange={(e) => {
-              return inputEdits({ stats: { str: e.target.value } });
-            }}
+            onChange={(e) => inputEdits({ stats: { str: e.target.value } })}
             className="input-stat"
             type="number"
             id="stat_stre"
@@ -64,9 +62,7 @@ export default function EditFormOverlay({ data, editValues, inputEdits }) {
           <label htmlFor="stat_dex">Dexterity:</label>
           <input
             value={editValues.stats.dex}
-            onChange={(e) => {
-              return inputEdits({ stats: { dex: e.target.value } });
-            }}
+           onChange={(e) => inputEdits({ stats: { dex: e.target.value } })}
             className="input-stat"
             type="number"
             id="stat_dex"
@@ -77,9 +73,7 @@ export default function EditFormOverlay({ data, editValues, inputEdits }) {
           <label htmlFor="stat_con">Constitution:</label>
           <input
             value={editValues.stats.con}
-            onChange={(e) => {
-              return inputEdits({ stats: { con: e.target.value } });
-            }}
+         onChange={(e) => inputEdits({ stats: { con: e.target.value } })}
             className="input-stat"
             type="number"
             id="stat_con"
@@ -90,9 +84,7 @@ export default function EditFormOverlay({ data, editValues, inputEdits }) {
           <label htmlFor="stat_int">Intelligence:</label>
           <input
             value={editValues.stats.int}
-            onChange={(e) => {
-              return inputEdits({ stats: { int: e.target.value } });
-            }}
+        onChange={(e) => inputEdits({ stats: { int: e.target.value } })}
             className="input-stat"
             type="number"
             id="stat_int"
@@ -103,9 +95,7 @@ export default function EditFormOverlay({ data, editValues, inputEdits }) {
           <label htmlFor="stat_wis">Wisdom:</label>
           <input
             value={editValues.stats.wis}
-            onChange={(e) => {
-              return inputEdits({ stats: { wis: e.target.value } });
-            }}
+      onChange={(e) => inputEdits({ stats: { wis: e.target.value } })}
             className="input-stat"
             type="number"
             id="stat_wis"
@@ -116,9 +106,7 @@ export default function EditFormOverlay({ data, editValues, inputEdits }) {
           <label htmlFor="stat_cha">Charisma:</label>
           <input
             value={editValues.stats.cha}
-            onChange={(e) => {
-              return inputEdits({ stats: { cha: e.target.value } });
-            }}
+           onChange={(e) => inputEdits({ stats: { cha: e.target.value } })}
             className="input-stat"
             type="number"
             id="stat_cha"
