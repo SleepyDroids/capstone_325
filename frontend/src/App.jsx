@@ -48,8 +48,6 @@ function App() {
     return <div>Error: {error.message}</div>;
   }
 
-
-
   return (
     <>
       <Header />

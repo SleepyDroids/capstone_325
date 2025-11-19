@@ -1,8 +1,14 @@
 import { useState, useReducer, useRef } from "react";
-import { useFormStatus } from "react-dom";
+// import { useFormStatus } from "react-dom";
 import { useMultipageForm } from "../useMultipageForm";
 
 import { BASE_URL } from "../../services/character-api.js";
+
+// Form components
+import NewBaseInfoForm from "../components/forms/NewBaseInfoForm.jsx";
+import NewStatsInfoForm from "../components/forms/NewStatsInfoForm.jsx";
+import NewNotesInfoForm from "../components/forms/NewNotesInfoForm.jsx";
+import SubmitButton from "../components/forms/SubmitButton.jsx";
 
 /*
 MVP Needs to be done: 
@@ -75,6 +81,7 @@ export default function CharacterForm({ data, newCharacter }) {
       return { ...prev, ...input };
     });
   }
+
   async function handleNewSubmit(e) {
     e.preventDefault();
     const character = {
@@ -114,190 +121,20 @@ export default function CharacterForm({ data, newCharacter }) {
 
   return (
     <div className="form-container">
-      {/* {page} */}
       <form onSubmit={handleNewSubmit}>
-        <div className="form-character">
-          <h2>General Info</h2>
-          <label htmlFor="name">Character Name:</label>
-          <input
-            value={baseInfo.name}
-            onChange={(e) => inputBaseInfo({ name: e.target.value })}
-            type="text"
-            id="name"
-            name="character_name"
-            className="char-input"
-            autoFocus
-            required
-          />
-          <br />
+        <NewBaseInfoForm baseInfo={baseInfo} inputBaseInfo={inputBaseInfo} />
 
-          <label htmlFor="race">Race:</label>
-          <select
-            value={baseInfo.race}
-            onChange={(e) => inputBaseInfo({ race: e.target.value })}
-            className="input-race"
-            name="race"
-            id="race"
-            required
-          >
-            <option value="Human">Human</option>
-            <option value="Dragonborn">Dragonborn</option>
-            <option value="Dwarf">Dwarf</option>
-            <option value="Elf">Elf</option>
-            <option value="Half-Elf">Half-Elf</option>
-            <option value="Half-Orc">Half-Orc</option>
-            <option value="Halfling">Halfling</option>
-            <option value="Tiefling">Tiefling</option>
-            <option value="Gnome">Gnome</option>
-          </select>
+        <NewStatsInfoForm
+          statsInfo={statsInfo}
+          inputStatsInfo={inputStatsInfo}
+        />
 
-          <label htmlFor="charClass">Class:</label>
-          <select
-            value={baseInfo.charClass}
-            onChange={(e) => inputBaseInfo({ charClass: e.target.value })}
-            className="input-class"
-            name="charClass"
-            id="charClass"
-            required
-          >
-            <option value="Barbarian">Barbarian</option>
-            <option value="Bard">Bard</option>
-            <option value="Cleric">Cleric</option>
-            <option value="Druid">Druid</option>
-            <option value="Monk">Monk</option>
-            <option value="Fighter">Fighter</option>
-            <option value="Paladin">Paladin</option>
-            <option value="Ranger">Ranger</option>
-            <option value="Rogue">Rogue</option>
-            <option value="Sorcerer">Sorcerer</option>
-            <option value="Warlock">Warlock</option>
-            <option value="Wizard">Wizard</option>
-          </select>
+        <NewNotesInfoForm
+          notesInfo={notesInfo}
+          inputNotesInfo={inputNotesInfo}
+        />
 
-          <br />
-          <label htmlFor="background">Background:</label>
-          <input
-            value={baseInfo.background}
-            onChange={(e) => inputBaseInfo({ background: e.target.value })}
-            type="text"
-            id="background"
-            name="character_bg"
-            className="char-input"
-          />
-        </div>
-
-        <div className="form-level">
-          <label htmlFor="level">Level (1-20):</label>
-          <input
-            value={baseInfo.level}
-            onChange={(e) => inputBaseInfo({ level: Number(e.target.value) })}
-            className="input-level"
-            type="number"
-            id="level"
-            name="level"
-            min="1"
-            max="20"
-          />
-        </div>
-
-        <div className="form-stats">
-          <h3>Stats</h3>
-
-          <label htmlFor="stat_stre">Strength:</label>
-          <input
-            value={statsInfo.stats.str}
-            onChange={(e) => inputStatsInfo({ str: e.target.value })}
-            className="input-stat"
-            type="number"
-            id="stat_stre"
-            name="stat_str"
-            min="1"
-          />
-
-          <label htmlFor="stat_dex">Dexterity:</label>
-          <input
-            value={statsInfo.stats.dex}
-            onChange={(e) => inputStatsInfo({ dex: e.target.value })}
-            className="input-stat"
-            type="number"
-            id="stat_dex"
-            name="stat_dex"
-            min="1"
-          />
-
-          <label htmlFor="stat_con">Constitution:</label>
-          <input
-            value={statsInfo.stats.con}
-            onChange={(e) => inputStatsInfo({ con: e.target.value })}
-            className="input-stat"
-            type="number"
-            id="stat_con"
-            name="stat_con"
-            min="1"
-          />
-
-          <label htmlFor="stat_int">Intelligence:</label>
-          <input
-            value={statsInfo.stats.int}
-            onChange={(e) => inputStatsInfo({ int: e.target.value })}
-            className="input-stat"
-            type="number"
-            id="stat_int"
-            name="stat_int"
-            min="1"
-          />
-
-          <label htmlFor="stat_wis">Wisdom:</label>
-          <input
-            value={statsInfo.stats.wis}
-            onChange={(e) => inputStatsInfo({ wis: e.target.value })}
-            className="input-stat"
-            type="number"
-            id="stat_wis"
-            name="stat_wis"
-            min="1"
-          />
-
-          <label htmlFor="stat_cha">Charisma:</label>
-          <input
-            value={statsInfo.stats.cha}
-            onChange={(e) => inputStatsInfo({ cha: e.target.value })}
-            className="input-stat"
-            type="number"
-            id="stat_cha"
-            name="stat_cha"
-            min="1"
-          />
-          <button type="button" className="randomBtn">
-            Randomize Stats?
-          </button>
-        </div>
-
-        <div className="form-notes">
-          <label htmlFor="notes">
-            <h3>Notes / Additional Details</h3>
-          </label>
-
-          <textarea
-            value={notesInfo.notes}
-            onChange={(e) => inputNotesInfo({ notes: e.target.value })}
-            className="input-notes"
-            id="notes"
-            name="notes"
-            // defaultValue={
-            //   "Any additional details, campaign notes can go in here."
-            // }
-            rows="5"
-            cols="33"
-          ></textarea>
-        </div>
-
-        <div className="form-subimt">
-          <button className="clearBtn" disabled>
-            Clear all fields
-          </button>
-          <button className="submitBtn">Create Character</button>
-        </div>
+        <SubmitButton />
       </form>
     </div>
   );
