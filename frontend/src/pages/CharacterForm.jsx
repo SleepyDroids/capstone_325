@@ -1,7 +1,4 @@
 import { useState } from "react";
-// import { useFormStatus } from "react-dom";
-// import { useMultipageForm } from "../useMultipageForm";
-
 import { BASE_URL } from "../../services/character-api.js";
 
 // Form components
