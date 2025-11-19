@@ -1,8 +1,11 @@
 import express from "express";
-
+import Character from "../models/Character.js";
 const router = express.Router();
 
-import charController from "../controllers/characters.js"
+import charController from "../controllers/characters.js";
+
+// creating a patch route to specfically only flip the favorites property
+router.patch("/:id/fav", charController.toggleFavorites);
 
 router
   .route("/:id")

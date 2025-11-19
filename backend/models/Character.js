@@ -43,6 +43,7 @@ const characterSchema = mongoose.Schema(
     // gets its own stats block instead of sharing one.
     stats: { type: statsSchema, default: () => ({}) },
     notes: { type: String },
+    isFavorite: { type: Boolean, default: false }
   },
   { timestamps: true }
 );

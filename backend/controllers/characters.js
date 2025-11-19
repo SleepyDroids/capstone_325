@@ -13,7 +13,16 @@ const getAll = async (req, res) => {
 const createCharacter = async (req, res) => {
   try {
     // Destructuring values from the req.body
-    const { name, race, charClass, background, level, stats, notes } = req.body;
+    const {
+      name,
+      race,
+      charClass,
+      background,
+      level,
+      stats,
+      notes,
+      isFavorite,
+    } = req.body;
 
     // Additional validation in my server as these are required fields by the schema
     if (!name || !race || !charClass) {
@@ -30,6 +39,7 @@ const createCharacter = async (req, res) => {
       level,
       stats,
       notes,
+      isFavorite,
     });
     res.status(201).json(newCharacter); // ok!
   } catch (e) {
@@ -53,12 +63,19 @@ const getOne = async (req, res) => {
 const editCharacter = async (req, res) => {
   try {
     const originalDoc = req.params.id;
-    const { name, race, charClass, background, level, stats, notes } = req.body;
+    const {
+      name,
+      race,
+      charClass,
+      background,
+      level,
+      stats,
+      notes,
+      isFavorite,
+    } = req.body;
 
     if (!name) {
-      return res
-        .status(400)
-        .json({ message: "Name is required." });
+      return res.status(400).json({ message: "Name is required." });
     }
 
     const replacementDoc = await Character.replaceOne(
@@ -71,6 +88,7 @@ const editCharacter = async (req, res) => {
         level,
         stats,
         notes,
+        isFavorite,
       }
     );
     console.log("Updated character:" + replacementDoc);
@@ -97,10 +115,30 @@ const deleteCharacter = async (req, res) => {
   }
 };
 
+const toggleFavorites = async (req, res) => {
+  try {
+    // const { isFavorite } = req.body;
+    const character = await Character.findById(req.params.id);
+
+    if (!character) {
+      console.log("Charcter not found.");
+      res.status(400).json("Character not found.");
+    }
+
+    character.isFavorite = !character.isFavorite;
+    await character.save();
+    res.status(200).json(character);
+  } catch (e) {
+    console.log(e);
+    res.json({ error: e.message });
+  }
+};
+
 export default {
   getOne,
   getAll,
   deleteCharacter,
   editCharacter,
   createCharacter,
+  toggleFavorites,
 };

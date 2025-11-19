@@ -1,11 +1,12 @@
 import avatar6 from "../assets/avatars/6.png";
 import { Link } from "react-router";
 
-export default function CharacterCard({ data }) {
+export default function CharacterCard({ data, addToFaves }) {
   return (
     <div className="character-card">
       <h2>{data.name}</h2>
       <img src={avatar6} alt={`Portrait image of ${data.name}`} />
+      <p>Is this a favorite? {data.isFavorite ? "In faves" : "Not in faves"}</p>
       <ul>
         <li>
           <span className="card-text">Class:</span> {data.charClass}
@@ -18,7 +19,7 @@ export default function CharacterCard({ data }) {
         </li>
       </ul>
       <div className="character-card-btns">
-        <button>Add to Faves</button>
+        <button onClick={addToFaves}>Add to Favorites</button>
         <Link to={`/characters/details/${data.name}`}>
           <button>View Details</button>
         </Link>
