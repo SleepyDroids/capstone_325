@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
 import EditFormOverlay from "../components/forms/EditFormOverlay";
+import EditFormButtons from "../components/forms/EditFormButtons";
 
 export default function CharacterDetails({ data }) {
   const [details, setDetails] = useState({});
   const [isEditing, setIsEditing] = useState(false);
-  const [editValues, setEditValues] = useState("");
+  const [editValues, setEditValues] = useState({});
 
   const navigate = useNavigate();
   const { name } = useParams();
@@ -20,7 +21,6 @@ export default function CharacterDetails({ data }) {
 
   // Edit button handler
   function toggleEditing() {
-    setIsEditing((prev) => !prev);
     setEditValues({
       name: details.name,
       background: details.background,
@@ -34,20 +34,28 @@ export default function CharacterDetails({ data }) {
         cha: details.stats.cha,
       },
       notes: details.notes,
-    })
-    // console.log(editValues)
+    });
+    setIsEditing((prev) => !prev);
+    console.log(editValues);
   }
 
   async function handleSubmitEdit(e) {
     e.preventDefault();
   }
 
-  async function handleDeleteCharacter() {
-   
+  function inputEdits(inputs) {
+    setEditValues((prev) => {
+      return { ...prev, ...inputs };
+    });
   }
 
-  function handleEditCancel () {
- // Have prompt here to ask the user if they're sure first before hitting the server
+  async function handleDeleteCharacter() {
+    // Have prompt here to ask the user if they're sure first before hitting the server
+    // option to delete, redirect back to character list after confirmation of deletion
+  }
+
+  function handleEditCancel() {
+    // Should back out of the overlay
   }
 
   return (
@@ -140,12 +148,17 @@ export default function CharacterDetails({ data }) {
         </div>
 
         <div className="character-details-btns">
-          <button onClick={toggleEditing}>Edit Character</button>{" "}
-          <button>Delete Character</button>
+          {details.stats && <EditFormButtons toggleEditing={toggleEditing} />}
         </div>
       </div>
 
-      {isEditing && <EditFormOverlay data={details} editValues={editValues} />}
+      {isEditing && (
+        <EditFormOverlay
+          data={details}
+          editValues={editValues}
+          inputEdits={inputEdits}
+        />
+      )}
     </>
   );
 }
