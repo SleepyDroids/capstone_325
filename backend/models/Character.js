@@ -48,3 +48,5 @@ const characterSchema = mongoose.Schema(
 );
 
 export default mongoose.model("Character", characterSchema);
+
+// going to attempt to add a favorites toggle
