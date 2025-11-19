@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { BASE_URL } from "../../services/character-api";
 
 import EditFormOverlay from "../components/forms/EditFormOverlay";
-import EditFormButtons from "../components/forms/EditFormButtons";
+import EditButtons from "../components/forms/EditButtons";
 
 export default function CharacterDetails({ data }) {
   const [details, setDetails] = useState({});
@@ -41,6 +42,38 @@ export default function CharacterDetails({ data }) {
 
   async function handleSubmitEdit(e) {
     e.preventDefault();
+    const editedCharacter = {
+      name: editValues.name,
+      race: details.race,
+      charClass: details.charClass,
+      background: editValues.background,
+      level: editValues.level,
+      stats: {
+        str: editValues.stats.str,
+        dex: editValues.stats.dex,
+        con: editValues.stats.con,
+        int: editValues.stats.int,
+        wis: editValues.stats.wis,
+        cha: editValues.stats.cha,
+      },
+      notes: editValues.notes,
+    };
+    try {
+      const response = await fetch(`${BASE_URL}/characters/${details._id}`, {
+        method: "PUT",
+        body: JSON.stringify(editedCharacter),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const edits = await response.json();
+      console.log(edits);
+      setIsEditing((prev) => !prev);
+      navigate(`/characters/details/${editValues.name}`);
+      // slight bug where if anything but the name is edited on the page, still shows old stats
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   function inputEdits(inputs) {
@@ -49,9 +82,18 @@ export default function CharacterDetails({ data }) {
     });
   }
 
-  async function handleDeleteCharacter() {
-    // Have prompt here to ask the user if they're sure first before hitting the server
-    // option to delete, redirect back to character list after confirmation of deletion
+  async function handleDeleteCharacter(id) {
+    console.log("character has been deleted");
+    try {
+      const character = await fetch(`${BASE_URL}/characters/${details._id}`, {
+        method: "DELETE",
+      });
+      const deleted = data.filter((c) => c._id !== id);
+      console.log(deleted);
+      navigate("/characters");
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   function handleEditCancel() {
@@ -148,7 +190,13 @@ export default function CharacterDetails({ data }) {
         </div>
 
         <div className="character-details-btns">
-          {details.stats && <EditFormButtons toggleEditing={toggleEditing} />}
+          {details.stats && (
+            <EditButtons
+              toggleEditing={toggleEditing}
+              onDelete={handleDeleteCharacter}
+              details={details}
+            />
+          )}
         </div>
       </div>
 
@@ -157,6 +205,7 @@ export default function CharacterDetails({ data }) {
           data={details}
           editValues={editValues}
           inputEdits={inputEdits}
+          onSaveEdits={handleSubmitEdit}
         />
       )}
     </>

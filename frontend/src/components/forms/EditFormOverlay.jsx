@@ -1,4 +1,4 @@
-export default function EditFormOverlay({ data, editValues, inputEdits }) {
+export default function EditFormOverlay({ data, editValues, inputEdits, onSaveEdits }) {
   return (
     <div id="edit-form">
       <form>
@@ -127,7 +127,7 @@ export default function EditFormOverlay({ data, editValues, inputEdits }) {
             name="notes"
           ></textarea>
         </div>
-        <button>Save</button> <button type="button">Cancel</button>
+        <button onClick={onSaveEdits}>Save</button> <button type="button">Cancel</button>
       </form>
     </div>
   );

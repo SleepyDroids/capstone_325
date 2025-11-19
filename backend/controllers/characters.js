@@ -12,22 +12,6 @@ const getAll = async (req, res) => {
 
 const createCharacter = async (req, res) => {
   try {
-    /*
-    Based off my schema, the req.body needs to include: 
-    name, race, charClass --> required
-    background: optional
-    level: optional, default is 1
-    stats: { 
-    str: optional for now, default is 10,
-    dex: optional for now, default is 10,
-    con: optional for now, default is 10,
-    int: optional for now, default is 10,
-    wis: optional for now, default is 10,
-    cha: optional for now, default is 10 
-    }
-    notes: optional
-    */
-
     // Destructuring values from the req.body
     const { name, race, charClass, background, level, stats, notes } = req.body;
 
@@ -71,10 +55,10 @@ const editCharacter = async (req, res) => {
     const originalDoc = req.params.id;
     const { name, race, charClass, background, level, stats, notes } = req.body;
 
-    if (!name || !race || !charClass) {
+    if (!name) {
       return res
         .status(400)
-        .json({ message: "Name, race and class are required entries." });
+        .json({ message: "Name is required." });
     }
 
     const replacementDoc = await Character.replaceOne(
