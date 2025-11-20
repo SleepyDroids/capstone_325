@@ -1,4 +1,4 @@
-export default function UserFavorites({ filler, data }) {
+export default function UserFavorites({ filler, data, fav }) {
   return (
     <div className="user-favorites">
       <span className="profile-text">Your Favorites:</span>
@@ -8,7 +8,8 @@ export default function UserFavorites({ filler, data }) {
             <div className="favorites-tiny" key={c._id}>
               <img src={filler} alt={c.name} />
               <p>
-                <strong>Level:</strong> {c.level} &middot;{" "}
+                <strong>{c.name}</strong> <br />
+                <strong>Level:</strong> {c.level} &middot; 
                 <strong>Class:</strong> {c.charClass}
               </p>
             </div>

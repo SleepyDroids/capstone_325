@@ -37,7 +37,7 @@ function App() {
     fetchData();
   }, []);
 
-  // console.log(characters);
+  console.log(characters);
 
   if (isLoading) {
     return (
@@ -64,17 +64,29 @@ function App() {
     } catch (e) {
       console.log(e);
     }
-    // setFavorite(toggleFavorite.isFavorite)
+    // map using id
+    // update that particular
+    // set thte state
+  const matchID = characters.map((c) => {
+      if (c._id === id) {
+        return c.isFavorite;
+      }
+    })
+setFavorite(matchID)
+
   }
-
-
 
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<Homepage data={characters} />} />
-        <Route path="/profile" element={<Profile data={characters} />} />
+        <Route
+          path="/profile"
+          element={
+            <Profile data={characters} fav={favorite} setFav={setFavorite} />
+          }
+        />
         <Route
           path="/characters"
           element={

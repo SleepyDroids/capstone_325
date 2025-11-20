@@ -97,7 +97,7 @@ export default function CharacterDetails({ data }) {
   }
 
   function handleEditCancel() {
-    // Should back out of the overlay
+    setIsEditing(false)
   }
 
   return (
@@ -206,6 +206,7 @@ export default function CharacterDetails({ data }) {
           editValues={editValues}
           inputEdits={inputEdits}
           onSaveEdits={handleSubmitEdit}
+          cancelEdit={handleEditCancel}
         />
       )}
     </>

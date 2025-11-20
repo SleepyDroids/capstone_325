@@ -1,6 +1,6 @@
 import CharacterCard from "../components/CharacterCard";
 
-export default function CharacterList({ data, addToFaves, fav, setFav }) {
+export default function CharacterList({ data, addToFaves, fav }) {
 
   const sortByFavorite = data.filter((c) => {
    c.isFavorite === false ? true : c 
@@ -10,7 +10,7 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
   return (
     <>
       <div className="filters">
-        <label htmlFor="favorites">Sort by:</label>
+        <label htmlFor="fav-select">Sort by:</label>
         <select name="favorites" className="drop-down" id="fav-select">
           <option>Favorites Only</option>
           <option>All characters</option>
@@ -18,7 +18,7 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
       </div>
       <div className="character-container">
         {data.map((c) => {
-          return <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />;
+          return <CharacterCard data={c} addToFaves={addToFaves} key={c._id} fav={fav} />;
         })}
       </div>
     </>
