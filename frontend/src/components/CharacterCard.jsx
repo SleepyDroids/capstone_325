@@ -20,7 +20,9 @@ export default function CharacterCard({ data, addToFaves, favStatus }) {
       </ul>
       <div className="character-card-btns">
         <button onClick={() => addToFaves(data._id)}>
-          {data.isFavorite === true ? "Remove From Favorites" : "Add To Favorites" }
+          {data.isFavorite === true
+            ? "Remove From Favorites"
+            : "Add To Favorites"}
         </button>
         <Link to={`/characters/details/${data.name}`}>
           <button>View Details</button>

@@ -1,11 +1,7 @@
 import CharacterCard from "../components/CharacterCard";
 
-
-
 export default function CharacterList({ data, addToFaves }) {
   console.log(data);
-
-  
 
   return (
     <div className="character-container">

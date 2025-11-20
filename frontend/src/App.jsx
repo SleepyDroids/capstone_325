@@ -15,12 +15,13 @@ import CharacterList from "./pages/CharacterList.jsx";
 import CharacterForm from "./pages/CharacterForm.jsx";
 import CharacterDetails from "./pages/CharacterDetails.jsx";
 import Homepage from "./components/Homepage";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
   const [characters, setCharacters] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [favorite, setFavorite] = useState(false)
+  const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,18 +52,15 @@ function App() {
   }
 
   async function toggleFavorite(id) {
- // There's no request body and it should work by passing an id
     try {
       const response = await fetch(`${BASE_URL}/characters/${id}/fav`, {
         method: "PATCH",
-        // body: JSON.stringify(character),
         headers: {
           "Content-Type": "application/json",
-        }
+        },
       });
       const toggleFavorite = await response.json();
       console.log(toggleFavorite);
-      // this should return the character object with a flipped bool
     } catch (e) {
       console.log(e);
     }
@@ -74,10 +72,15 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Homepage data={characters} />} />
+        <Route path="/profile" element={<Profile data={characters} />} />
         <Route
           path="/characters"
           element={
-            <CharacterList data={characters} addToFaves={toggleFavorite} favStatus={favorite} />
+            <CharacterList
+              data={characters}
+              addToFaves={toggleFavorite}
+              favStatus={favorite}
+            />
           }
         />
         <Route
