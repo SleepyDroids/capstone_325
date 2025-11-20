@@ -16,7 +16,7 @@ export default function NewBaseInfoForm({ inputBaseInfo, baseInfo }) {
         />
         <br />
 
-        <label htmlFor="race">Race:</label>
+        <label htmlFor="race">Species:</label>
         <select
           value={baseInfo.race}
           onChange={(e) => inputBaseInfo({ race: e.target.value })}

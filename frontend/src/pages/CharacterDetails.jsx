@@ -106,7 +106,7 @@ export default function CharacterDetails({ data }) {
         <h1>{details.name}</h1>
         <ul>
           <li>
-            <span className="details-text">Race: </span>
+            <span className="details-text">Species: </span>
             {details.race}
           </li>
           <li>

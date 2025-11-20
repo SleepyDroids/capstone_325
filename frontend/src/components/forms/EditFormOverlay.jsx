@@ -16,7 +16,7 @@ export default function EditFormOverlay({ data, editValues, inputEdits, onSaveEd
           />
 
           <p>
-            <span className="details-text">Race:</span> {data.race}
+            <span className="details-text">Species:</span> {data.race}
           </p>
           <p>
             <span className="details-text">Class:</span> {data.charClass}

@@ -6,13 +6,13 @@ export default function CharacterCard({ data, addToFaves, favStatus }) {
     <div className="character-card">
       <h2>{data.name}</h2>
       <img src={avatar6} alt={`Portrait image of ${data.name}`} />
-      <p>Is this a favorite? {data.isFavorite === true ? "No" : "Yes"}</p>
+      <p>Is this a favorite? {data.isFavorite === true ? "Yes" : "No"}</p>
       <ul>
         <li>
           <span className="card-text">Class:</span> {data.charClass}
         </li>
         <li>
-          <span className="card-text">Race:</span> {data.race}
+          <span className="card-text">Species:</span> {data.race}
         </li>
         <li>
           <span className="card-text">Background:</span> {data.background}
