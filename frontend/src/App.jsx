@@ -64,16 +64,15 @@ function App() {
     } catch (e) {
       console.log(e);
     }
-    // map using id
-    // update that particular
-    // set thte state
-  const matchID = characters.map((c) => {
-      if (c._id === id) {
-        return c.isFavorite;
-      }
-    })
-setFavorite(matchID)
 
+    const matchID = characters.map((c) => {
+      if (c._id === id) {
+        c.isFavorite = !c.isFavorite;
+      }
+      return c;
+    });
+    console.log(matchID);
+    setFavorite(matchID);
   }
 
   return (
