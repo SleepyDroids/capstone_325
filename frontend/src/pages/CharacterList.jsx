@@ -2,17 +2,15 @@ import CharacterCard from "../components/CharacterCard";
 
 
 
-export default function CharacterList({ data }) {
+export default function CharacterList({ data, addToFaves }) {
   console.log(data);
 
-  async function toggleFavorite() {
-  console.log('add to faves')
-}
+  
 
   return (
     <div className="character-container">
       {data.map((c) => {
-        return <CharacterCard data={c} addToFaves={toggleFavorite} key={c._id} />;
+        return <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />;
       })}
     </div>
   );
