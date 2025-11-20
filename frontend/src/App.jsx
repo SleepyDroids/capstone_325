@@ -66,7 +66,7 @@ function App() {
     } catch (e) {
       console.log(e);
     }
-    setFavorite(toggleFavorite.isFavorite)
+    // setFavorite(toggleFavorite.isFavorite)
   }
 
   return (
@@ -77,7 +77,7 @@ function App() {
         <Route
           path="/characters"
           element={
-            <CharacterList data={characters} addToFaves={toggleFavorite} />
+            <CharacterList data={characters} addToFaves={toggleFavorite} favStatus={favorite} />
           }
         />
         <Route
