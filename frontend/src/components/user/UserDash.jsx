@@ -4,7 +4,7 @@ export default function UserDash({ filler }) {
       <img src={filler} alt="profile picture" />
       <ul>
         <li>Username</li>
-        <li>Notifications</li>
+        <li>Messages</li>
       </ul>
     </div>
   );

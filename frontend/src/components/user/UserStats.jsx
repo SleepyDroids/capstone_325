@@ -1,10 +1,10 @@
-export default function UserStats() {
+export default function UserStats({ data }) {
   return (
     <div className="user-stats">
       <span className="profile-text">Current Statistics:</span>
       <ul>
         <li>
-          <span className="details-text">Total:</span> 12
+          <span className="details-text">Total:</span> {data.length}
         </li>
         <li>
           <span className="details-text">Top Class:</span> Paladin
