@@ -72,7 +72,7 @@ function App() {
       return c;
     });
     console.log(matchID);
-    setFavorite(matchID);
+    setCharacters(matchID);
   }
 
   return (
