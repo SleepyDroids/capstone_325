@@ -67,6 +67,8 @@ function App() {
     // setFavorite(toggleFavorite.isFavorite)
   }
 
+
+
   return (
     <>
       <Header />
@@ -79,7 +81,8 @@ function App() {
             <CharacterList
               data={characters}
               addToFaves={toggleFavorite}
-              favStatus={favorite}
+              fav={favorite}
+              setFav={setFavorite}
             />
           }
         />

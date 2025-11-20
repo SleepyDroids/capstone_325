@@ -9,7 +9,22 @@ function classImage(c) {
   }
 }
 
-const randomUsers = [
+// Profile Page Functions / Variables
+
+// gonna test this with my data array
+// // export 
+//       function classFrequency (characterss) {
+//     const classFrequencies = {}
+//         characters.forEach((classs) => {
+//             classFrequencies[classs] = (classFrequencies[classs] ?? 0) + 1
+//         })
+//         return classFrequencies;
+// }
+
+// console.log(characters)
+// // console.log(classFrequency(characters.charClass))
+
+export const randomUsers = [
   {
     user: "Bob",
     username: "TheMightyBob",

@@ -1,4 +1,5 @@
 export default function UserStats({ data }) {
+
   return (
     <div className="user-stats">
       <span className="profile-text">Current Statistics:</span>
@@ -13,7 +14,7 @@ export default function UserStats({ data }) {
           <span className="details-text">Top Species:</span> Gnome
         </li>
         <li>
-          <span className="details-text">Last Updated:</span> 12
+          <span className="details-text">Highest Level:</span> 20
         </li>
       </ul>
     </div>
