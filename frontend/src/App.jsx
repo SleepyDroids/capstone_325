@@ -21,7 +21,7 @@ function App() {
   const [characters, setCharacters] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [favorite, setFavorite] = useState(false);
+  const [favorite, setFavorite] = useState("all");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,7 +83,7 @@ function App() {
         <Route
           path="/profile"
           element={
-            <Profile data={characters} fav={favorite} setFav={setFavorite} />
+            <Profile data={characters} />
           }
         />
         <Route

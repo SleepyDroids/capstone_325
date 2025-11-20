@@ -1,25 +1,55 @@
 import CharacterCard from "../components/CharacterCard";
 
-export default function CharacterList({ data, addToFaves, fav }) {
+export default function CharacterList({ data, addToFaves, fav, setFav }) {
 
-  const sortByFavorite = data.filter((c) => {
-   c.isFavorite === false ? true : c 
+  function handleSelectChange(e) {
+    if (e.target.value === "all") {
+      setFav("all");
+    } else {
+      setFav("favorites");
+    }
+  }
 
-  })
+  // selector needs a string value and a state value so that the onChange in the selector will actually have the page render according to favorite status
+  // can chain methods, so an additional variable for filter was unnecessary
+  // now the ternary reads as --> if this selected option "favorites" is equal to the state variable, only show the filtered results
+  // otherwise revert to showing up all the characters
 
   return (
     <>
       <div className="filters">
         <label htmlFor="fav-select">Sort by:</label>
-        <select name="favorites" className="drop-down" id="fav-select">
-          <option>Favorites Only</option>
-          <option>All characters</option>
+        <select
+          value={fav}
+          onChange={handleSelectChange}
+          name="favorites"
+          className="drop-down"
+          id="fav-select"
+        >
+          <option value="all">All characters</option>
+          <option value="favorites">Favorites Only</option>
         </select>
       </div>
       <div className="character-container">
-        {data.map((c) => {
-          return <CharacterCard data={c} addToFaves={addToFaves} key={c._id} fav={fav} />;
-        })}
+        {fav === "favorites"
+          ? data
+              .filter((c) => c.isFavorite === true)
+              .map((c) => (
+                <CharacterCard
+                  data={c}
+                  addToFaves={addToFaves}
+                  key={c._id}
+                  fav={fav}
+                />
+              ))
+          : data.map((c) => (
+              <CharacterCard
+                data={c}
+                addToFaves={addToFaves}
+                key={c._id}
+                fav={fav}
+              />
+            ))}
       </div>
     </>
   );

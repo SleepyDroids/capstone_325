@@ -1,4 +1,4 @@
-export default function UserFavorites({ filler, data, fav }) {
+export default function UserFavorites({ filler, data }) {
   return (
     <div className="user-favorites">
       <span className="profile-text">Your Favorites:</span>

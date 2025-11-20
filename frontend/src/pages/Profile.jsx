@@ -9,13 +9,13 @@ import UserStats from "../components/user/UserStats";
 import UserFavorites from "../components/user/UserFavorites";
 import UserCampaigns from "../components/user/UserCampaigns";
 
-export default function Profile({ data, fav, setFav }) {
+export default function Profile({ data}) {
 
   return (
     <div className="profile-container">
       <h1>Welcome back adventurer Bob!</h1>
       <UserDash filler={filler} />
-      <UserFavorites data={data} filler={filler} fav={fav} />
+      <UserFavorites data={data} filler={filler} />
       <UserStats data={data} />
       <UserCampaigns />
     </div>
