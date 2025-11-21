@@ -71,7 +71,6 @@ function App() {
       }
       return c;
     });
-    // console.log(matchID);
     setCharacters(matchID);
   }
 

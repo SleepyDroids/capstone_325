@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 // images
 import filler from "../assets/react.svg";
 

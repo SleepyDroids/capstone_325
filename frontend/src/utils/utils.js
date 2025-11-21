@@ -93,5 +93,5 @@ export const randomUsers = [
 ];
 
 const randomCampaigns = [
-  
+
 ]

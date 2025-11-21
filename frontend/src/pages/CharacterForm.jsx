@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BASE_URL } from "../../services/character-api.js";
 
+
 // Form components
 import NewBaseInfoForm from "../components/forms/NewBaseInfoForm.jsx";
 import NewStatsInfoForm from "../components/forms/NewStatsInfoForm.jsx";
@@ -8,11 +9,6 @@ import NewNotesInfoForm from "../components/forms/NewNotesInfoForm.jsx";
 import SubmitButton from "../components/forms/SubmitButton.jsx";
 
 export default function CharacterForm() {
-  // const { pages, page } = useMultipageForm([
-  //   <div>Page 1</div>,
-  //   <div>Page 2</div>,
-  //   <div>Page 3</div>,
-  // ]);
 
   const initialBase = {
     name: "",

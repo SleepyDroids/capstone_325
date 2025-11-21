@@ -9,7 +9,7 @@ export default function UserFavorites({ filler, data }) {
               <img src={filler} alt={c.name} />
               <p>
                 <strong>{c.name}</strong> <br />
-                <strong>Level:</strong> {c.level} &middot; 
+                <strong>Level:</strong> {c.level} |  
                 <strong>Class:</strong> {c.charClass}
               </p>
             </div>
