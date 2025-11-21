@@ -1,7 +1,36 @@
 import CharacterCard from "../components/CharacterCard";
 import CharacterListFilters from "../components/CharacterListFilters";
 
+import { useState, createContext } from "react";
+
+const FilterContext = createContext();
+
 export default function CharacterList({ data, addToFaves, fav, setFav }) {
+  // dealing with multiple filter options, so using useState to manage both species and class
+  // since they should be similar and instead of making individual useStates like I did with favorites
+  // will figure out how to convert it if I can get it to work with species and class
+  const [filters, setFilters] = useState({
+    species: "",
+    charClass: "",
+  });
+
+  function handleFilterChange(e) {
+    // destructuring the event object as name will refer to the select name and value is the option
+    const { name, value } = e.target;
+    setFilters((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
+  const filteredCharacters = data.filter((c) => {
+    return (
+      (filters.charClass === "" ||
+        c.charClass.toLowerCase() === filters.charClass.toLowerCase()) &&
+      (filters.species === "" ||
+        c.race.toLowerCase() === filters.species.toLowerCase())
+    );
+  });
 
   function handleSelectFavChange(e) {
     if (e.target.value === "all") {
@@ -18,26 +47,32 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
 
   return (
     <>
-      <CharacterListFilters fav={fav} data={data} handleSelectFavChange={handleSelectFavChange} />
-      <div className="character-container">
-        {fav === "favorites"
-          ? data
-              .filter((c) => c.isFavorite === true)
-              .map((c) => (
-                <CharacterCard
-                  data={c}
-                  addToFaves={addToFaves}
-                  key={c._id}
-                />
-              ))
-          : data.map((c) => (
-              <CharacterCard
-                data={c}
-                addToFaves={addToFaves}
-                key={c._id}
-              />
-            ))}
-      </div>
+      <FilterContext.Provider value={{ filters, handleFilterChange }}>
+        <CharacterListFilters
+          fav={fav}
+          handleSelectFavChange={handleSelectFavChange}
+          // filters={filters}
+          // handleFilterChange={handleFilterChange}
+          FilterContext={FilterContext}
+        />
+        <div className="character-container">
+          {filteredCharacters.map((c) => (
+            <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
+          ))}
+        </div>
+      </FilterContext.Provider>
     </>
   );
 }
+
+/*
+   {fav === "favorites"
+          ? data
+              .filter((c) => c.isFavorite === true)
+              .map((c) => (
+                <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
+              ))
+          : data.map((c) => (
+              <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
+            ))}
+*/
