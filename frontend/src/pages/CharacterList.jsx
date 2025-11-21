@@ -37,7 +37,7 @@ export default function CharacterList({ data, addToFaves }) {
       (filters.favorites === "all" || c.isFavorite === true)
     );
   });
-  console.log(filteredCharacters.length);
+  // console.log(filteredCharacters.length);
   // selector needs a string value and a state value so that the onChange in the selector will actually have the page render according to favorite status
   // can chain methods, so an additional variable for filter was unnecessary
   // now the ternary reads as --> if this selected option "favorites" is equal to the state variable, only show the filtered results

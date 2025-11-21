@@ -25,6 +25,7 @@ export default function NewBaseInfoForm({ inputBaseInfo, baseInfo }) {
           id="race"
           required
         >
+          <option value="">Select Species</option>
           <option value="Human">Human</option>
           <option value="Dragonborn">Dragonborn</option>
           <option value="Dwarf">Dwarf</option>
@@ -45,6 +46,7 @@ export default function NewBaseInfoForm({ inputBaseInfo, baseInfo }) {
           id="charClass"
           required
         >
+           <option value="">Select Class</option>
           <option value="Barbarian">Barbarian</option>
           <option value="Bard">Bard</option>
           <option value="Cleric">Cleric</option>

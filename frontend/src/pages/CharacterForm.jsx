@@ -19,7 +19,7 @@ import SubmitButton from "../components/forms/SubmitButton.jsx";
 //   localStorage.getItem("characterCubbyNotes") || "{}"
 // );
 
-console.log(localStorage)
+// console.log(localStorage)
 
 export default function CharacterForm() {
 
