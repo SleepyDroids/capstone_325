@@ -73,15 +73,16 @@ export default function CharacterDetails({ data, setData }) {
       const edits = await response.json();
       console.log(edits);
       setIsEditing((prev) => !prev);
-      const newData = data.map((c) => 
+      const newData = data.map((c) =>
         // Checks if characer ID matches the changed ID
         // they we want to give it the changed data (editedCharacter)
         // give back same data but as a copied object to React reacts
-        c._id === details._id ? editedCharacter : { ...c, stats: { ...c.stats } }
+        c._id === details._id
+          ? editedCharacter
+          : { ...c, stats: { ...c.stats } }
       );
       setData(newData);
       navigate(`/characters/details/${editValues.name}`);
-      // slight bug where if anything but the name is edited on the page, still shows old stats
     } catch (e) {
       console.log(e);
     }
@@ -101,31 +102,27 @@ export default function CharacterDetails({ data, setData }) {
       });
       const deleted = data.filter((c) => c._id !== id);
       console.log(deleted);
-      setShowConfirm(false);
-      // navigate("/characters");
+      // setShowConfirm(false);
+      navigate("/characters");
     } catch (e) {
       console.log(e);
     }
   }
 
-  function handleCancelDelete() {
-    setShowConfirm(false);
-  }
-
   return (
     <>
-    <CharacterDisplay details={details} />
+      <CharacterDisplay details={details} />
 
-        <div className="character-details-btns">
-          {details.stats && (
-            <>
-              <button onClick={toggleEditing}>Edit Character</button>
-              <button onClick={() => handleDeleteCharacter(details._id)}>
-                Delete Character
-              </button>
-            </>
-          )}
-        </div>
+      <div className="character-details-btns">
+        {details.stats && (
+          <>
+            <button onClick={toggleEditing}>Edit Character</button>
+            <button onClick={() => setShowConfirm(true)}>
+              Delete Character
+            </button>
+          </>
+        )}
+      </div>
 
       {isEditing && (
         <EditFormOverlay
@@ -134,6 +131,14 @@ export default function CharacterDetails({ data, setData }) {
           inputEdits={inputEdits}
           onSaveEdits={handleSubmitEdit}
           setIsEditing={setIsEditing}
+        />
+      )}
+
+      {showConfirm && (
+        <PromptUser
+          details={details}
+          setShowConfirm={setShowConfirm}
+          handleDeleteCharacter={handleDeleteCharacter}
         />
       )}
     </>
