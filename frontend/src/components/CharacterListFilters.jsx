@@ -1,9 +1,6 @@
-import { useContext } from "react";
-
 export default function CharacterListFilters({
-  FilterContext,
+  filters, handleFilterChange
 }) {
-  const { filters, handleFilterChange } = useContext(FilterContext);
 
   return (
     <div className="filters">

@@ -1,9 +1,7 @@
 import CharacterCard from "../components/CharacterCard";
 import CharacterListFilters from "../components/CharacterListFilters";
 
-import { useState, createContext } from "react";
-
-const FilterContext = createContext();
+import { useState } from "react";
 
 export default function CharacterList({ data, addToFaves }) {
   // Initialize filters to all meaning, "show all charatcers, do not filter them"
@@ -45,18 +43,15 @@ export default function CharacterList({ data, addToFaves }) {
 
   return (
     <>
-      <FilterContext.Provider value={{ filters, handleFilterChange }}>
         <CharacterListFilters
-          // filters={filters}
-          // handleFilterChange={handleFilterChange}
-          FilterContext={FilterContext}
+          filters={filters}
+          handleFilterChange={handleFilterChange}
         />
         <div className="character-container">
           {filteredCharacters.map((c) => (
             <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
           ))}
         </div>
-      </FilterContext.Provider>
     </>
   );
 }
@@ -77,15 +72,9 @@ export default function CharacterList({ data, addToFaves }) {
             <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
           ))}
 
-          
+For future reference about the useContext: 
+- With useContext, I was creating a new context that was stored the state variable for filtered and the handler for the selectors.
+- Since I am only sending the props one layer/component down, the Context Provider was unnecessary 
+- But good to know I can put multiple values into a context provider and then destructure it in the component that is using that context  
 */
 
-/*
-        <div className="character-container">
-          {(filters.charClass === "all" || filters.species === "all" || filters.favorites === "all") ? data.map((c) => (
-              <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
-            )) : filteredCharacters.map((c) => (
-            <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
-          ))}
-        </div>
-*/
