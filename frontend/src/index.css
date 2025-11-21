@@ -21,6 +21,34 @@ body {
   font-family: "Georgia", "Times New Roman", serif;
 }
 
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#overlay.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.prompt-container, #edit-form {
+position: fixed; 
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+/* above properties will center the overlay/modal on the screen */
+border: 2px solid #8c5a28;
+width: 700px;
+max-width: 80%;
+background-color: #fff7dd;
+}
+
+
+
 /* **** NAVIGATION BAR **** */
 .nav-bar {
   position: fixed;
@@ -64,6 +92,8 @@ body {
   background: #5a3520;
   color: #fff7dd;
 }
+
+/* **** CHARACTER LIST PAGE **** */
 
 .character-container {
   display: grid;

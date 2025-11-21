@@ -1,6 +1,6 @@
 export default function EditFormOverlay({ data, editValues, inputEdits, onSaveEdits, setIsEditing }) {
   return (
-    <div className="overlay">
+    <div id="overlay">
     <div id="edit-form">
       <form>
         <div className="form-character">
