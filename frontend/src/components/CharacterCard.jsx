@@ -14,10 +14,11 @@ export default function CharacterCard({ data, addToFaves }) {
         <li>
           <span className="card-text">Species:</span> {data.race}
         </li>
-        <li>
-          {/* {data.background && <span className="card-text">Background:</span> {data.background}} */}
-         
-        </li>
+        {data.background && (
+          <li>
+            <span className="card-text">Background:</span> {data.background}
+          </li>
+        )}
       </ul>
       <div className="character-card-btns">
         <button onClick={() => addToFaves(data._id)}>

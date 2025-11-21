@@ -26,6 +26,8 @@ export default function CharacterList({ data, addToFaves }) {
     // multiple checks to filter through a character (e.g. if the character class "Bard" matches the value of the option "Bard", show the user all "Bards")
     // (e.g. Bob will appear in specific class "bard" and "favorites" for example, but if I change the species to "tiefling" --> Bob will disappear because the third checked failed)
     // essentially (Bob won't appear if TTF, but will appear if all checks evaluate to true as in ("all" or "matched") === true)
+    // if all three checks evaluate to true, filter that character from data (characters state variable)
+    // then below in the UI, map through that data and display the character with their respective card information
     return (
       (filters.charClass === "all" ||
         c.charClass.toLowerCase().trim() ===
