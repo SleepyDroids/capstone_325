@@ -12,12 +12,57 @@
 body {
   margin: 0;
   padding: 0;
+  padding-left: 240px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   background: #f5ecd4;
   color: #2d1b0f;
   font-family: "Georgia", "Times New Roman", serif;
+}
+
+/* **** NAVIGATION BAR **** */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  background: #3c2415;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+  z-index: 20;
+}
+
+.nav-bar h1 {
+  font-size: 1.25rem;
+  color: #f5ecd4;
+  margin: 0 0 1rem 0;
+  /* adding space at the bottom of h1 to give some separation from the links */
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid #8c5a28;
+}
+
+.nav-bar p {
+  margin: 0;
+}
+
+.nav-bar a { 
+  text-decoration: none;
+  color: #d2a45b;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: block;
+  /* fills the container to make the row of the link clickable, not just the text */
+}
+
+.nav-bar a:hover {
+  background: #5a3520;
+  color: #fff7dd;
 }
 
 .character-container {
@@ -95,3 +140,69 @@ a {
 a:hover {
   color: #535bf2;
 }
+
+/* **** PROFILE PAGE **** */
+
+.profile-container {
+  width: 100%;
+  max-width: 1000px;
+  /* limits the width for readability on larger screens */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile-container h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #3c2415;
+  border-bottom: 2px solid #b08a57;
+  padding-bottom: 0.75rem;
+}
+
+.user-dash {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: #fff8e7;
+  padding: 1.25rem;
+  border-radius: 12px;
+    border-bottom: 2px solid #b08a57;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user-dash img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #8c5a28;
+  object-fit: cover;
+}
+
+.user-dash ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.profile-middle {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* makes favorites take up 2 parts (66%) and stats (33%) */
+  gap: 1.5rem;
+}
+
+.user-favorites {
+  background: #fff8e7;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 2px solid #b08a57;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, mixmax(120px, 1fr));
+  gap: 1rem;
+}
+

@@ -39,7 +39,6 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
                   data={c}
                   addToFaves={addToFaves}
                   key={c._id}
-                  fav={fav}
                 />
               ))
           : data.map((c) => (
@@ -47,7 +46,6 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
                 data={c}
                 addToFaves={addToFaves}
                 key={c._id}
-                fav={fav}
               />
             ))}
       </div>

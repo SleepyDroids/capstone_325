@@ -91,3 +91,7 @@ export const randomUsers = [
     messages: 3,
   },
 ];
+
+const randomCampaigns = [
+  
+]
