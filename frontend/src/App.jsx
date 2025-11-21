@@ -71,7 +71,7 @@ function App() {
       }
       return c;
     });
-    console.log(matchID);
+    // console.log(matchID);
     setCharacters(matchID);
   }
 
@@ -99,7 +99,7 @@ function App() {
         />
         <Route
           path="/characters/details/:name"
-          element={<CharacterDetails data={characters} />}
+          element={<CharacterDetails data={characters} setData={setCharacters} />}
         />
         <Route
           path="/characters/new"

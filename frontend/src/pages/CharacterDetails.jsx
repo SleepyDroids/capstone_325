@@ -3,11 +3,14 @@ import { useNavigate, useParams } from "react-router";
 import { BASE_URL } from "../../services/character-api";
 
 import EditFormOverlay from "../components/forms/EditFormOverlay";
-import EditButtons from "../components/forms/EditButtons";
+// import EditButtons from "../components/forms/EditButtons";
+import PromptUser from "../components/forms/PromptUser";
+import CharacterDisplay from "../components/CharacterDisplay";
 
-export default function CharacterDetails({ data }) {
+export default function CharacterDetails({ data, setData }) {
   const [details, setDetails] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const [editValues, setEditValues] = useState({});
 
   const navigate = useNavigate();
@@ -49,14 +52,15 @@ export default function CharacterDetails({ data }) {
       background: editValues.background,
       level: editValues.level,
       stats: {
-        str: editValues.stats.str,
-        dex: editValues.stats.dex,
-        con: editValues.stats.con,
-        int: editValues.stats.int,
-        wis: editValues.stats.wis,
-        cha: editValues.stats.cha,
+        str: Number(editValues.stats.str),
+        dex: Number(editValues.stats.dex),
+        con: Number(editValues.stats.con),
+        int: Number(editValues.stats.int),
+        wis: Number(editValues.stats.wis),
+        cha: Number(editValues.stats.cha),
       },
       notes: editValues.notes,
+      _id: details._id,
     };
     try {
       const response = await fetch(`${BASE_URL}/characters/${details._id}`, {
@@ -69,6 +73,13 @@ export default function CharacterDetails({ data }) {
       const edits = await response.json();
       console.log(edits);
       setIsEditing((prev) => !prev);
+      const newData = data.map((c) => 
+        // Checks if characer ID matches the changed ID
+        // they we want to give it the changed data (editedCharacter)
+        // give back same data but as a copied object to React reacts
+        c._id === details._id ? editedCharacter : { ...c, stats: { ...c.stats } }
+      );
+      setData(newData);
       navigate(`/characters/details/${editValues.name}`);
       // slight bug where if anything but the name is edited on the page, still shows old stats
     } catch (e) {
@@ -90,115 +101,31 @@ export default function CharacterDetails({ data }) {
       });
       const deleted = data.filter((c) => c._id !== id);
       console.log(deleted);
-      navigate("/characters");
+      setShowConfirm(false);
+      // navigate("/characters");
     } catch (e) {
       console.log(e);
     }
   }
 
-  function handleEditCancel() {
-    setIsEditing(false)
+  function handleCancelDelete() {
+    setShowConfirm(false);
   }
 
   return (
     <>
-      <div className="character-details">
-        <h1>{details.name}</h1>
-        <ul>
-          <li>
-            <span className="details-text">Species: </span>
-            {details.race}
-          </li>
-          <li>
-            <span className="details-text">Class: </span>
-            {details.charClass}
-          </li>
-          <li>
-            <span className="details-text">Background: </span>
-            {details.background}
-          </li>
-        </ul>
-
-        <div className="character-statblock">
-          <p className="char-level">
-            <span className="details-text">Level:</span> {details.level}
-          </p>
-
-          <table className="stats-table">
-            {/* <caption>{details.name} Stat Table</caption> */}
-            <thead>
-              <tr>
-                <th>Stat</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Strength</td>
-                <td>
-                  {details.stats && (
-                    <span className="stat-num">{details.stats.str}</span>
-                  )}
-                </td>
-              </tr>
-              <tr>
-                <td>Dexterity</td>
-                <td>
-                  {details.stats && (
-                    <span className="stat-num">{details.stats.dex}</span>
-                  )}
-                </td>
-              </tr>
-              <tr>
-                <td>Constitution</td>
-                <td>
-                  {details.stats && (
-                    <span className="stat-num">{details.stats.con}</span>
-                  )}
-                </td>
-              </tr>
-              <tr>
-                <td>Intelligence</td>
-                <td>
-                  {details.stats && (
-                    <span className="stat-num">{details.stats.int}</span>
-                  )}
-                </td>
-              </tr>
-              <tr>
-                <td>Wisdom</td>
-                <td>
-                  {details.stats && (
-                    <span className="stat-num">{details.stats.wis}</span>
-                  )}
-                </td>
-              </tr>
-              <tr>
-                <td>Charisma</td>
-                <td>
-                  {details.stats && (
-                    <span className="stat-num">{details.stats.cha}</span>
-                  )}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="character-notes">
-          <p>{details.notes}</p>
-        </div>
+    <CharacterDisplay details={details} />
 
         <div className="character-details-btns">
           {details.stats && (
-            <EditButtons
-              toggleEditing={toggleEditing}
-              onDelete={handleDeleteCharacter}
-              details={details}
-            />
+            <>
+              <button onClick={toggleEditing}>Edit Character</button>
+              <button onClick={() => handleDeleteCharacter(details._id)}>
+                Delete Character
+              </button>
+            </>
           )}
         </div>
-      </div>
 
       {isEditing && (
         <EditFormOverlay
@@ -206,7 +133,7 @@ export default function CharacterDetails({ data }) {
           editValues={editValues}
           inputEdits={inputEdits}
           onSaveEdits={handleSubmitEdit}
-          cancelEdit={handleEditCancel}
+          setIsEditing={setIsEditing}
         />
       )}
     </>
