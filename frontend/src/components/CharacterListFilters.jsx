@@ -1,18 +1,16 @@
 import { useContext } from "react";
 
 export default function CharacterListFilters({
-  fav,
-  handleSelectFavChange,
   FilterContext,
 }) {
   const { filters, handleFilterChange } = useContext(FilterContext);
 
   return (
     <div className="filters">
-      <label htmlFor="fav-select">Sort by:</label>
+      <label htmlFor="fav-select">Favorites Sort by:</label>
       <select
-        value={fav}
-        onChange={handleSelectFavChange}
+        value={filters.favorites}
+        onChange={handleFilterChange}
         name="favorites"
         className="drop-down"
         id="fav-select"

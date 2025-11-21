@@ -5,14 +5,12 @@ import { useState, createContext } from "react";
 
 const FilterContext = createContext();
 
-export default function CharacterList({ data, addToFaves, fav, setFav }) {
-  // dealing with multiple filter options, so using useState to manage both species and class
-  // since they should be similar and instead of making individual useStates like I did with favorites
-  // will figure out how to convert it if I can get it to work with species and class
+export default function CharacterList({ data, addToFaves }) {
+  // Initialize filters to all meaning, "show all charatcers, do not filter them"
   const [filters, setFilters] = useState({
-    species: "",
-    charClass: "",
-    level: ""
+    species: "all",
+    charClass: "all",
+    favorites: "all",
   });
 
   function handleFilterChange(e) {
@@ -23,23 +21,22 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
       [name]: value,
     }));
   }
+  // sets state on change (e.g. if the class selector says "Bard", filter through the characters and show all characters with "Bard" as their class)
 
   const filteredCharacters = data.filter((c) => {
+    // console.log(filters);
+    // multiple checks to filter through a character (e.g. if the character class "Bard" matches the value of the option "Bard", show the user all "Bards")
+    // (e.g. Bob will appear in specific class "bard" and "favorites" for example, but if I change the species to "tiefling" --> Bob will disappear because the third checked failed)
+    // essentially (Bob won't appear if TTF, but will appear if all checks evaluate to true as in ("all" or "matched") === true)
     return (
-      (filters.charClass === "" ||
-        c.charClass.toLowerCase() === filters.charClass.toLowerCase()) &&
-      (filters.species === "" ||
-        c.race.toLowerCase() === filters.species.toLowerCase())
+      (filters.charClass === "all" ||
+        c.charClass.toLowerCase().trim() ===
+          filters.charClass.toLowerCase().trim()) &&
+      (filters.species === "all" ||
+        c.race.toLowerCase().trim() === filters.species.toLowerCase().trim()) &&
+      (filters.favorites === "all" || c.isFavorite === true)
     );
   });
-
-  function handleSelectFavChange(e) {
-    if (e.target.value === "all") {
-      setFav("all");
-    } else {
-      setFav("favorites");
-    }
-  }
 
   // selector needs a string value and a state value so that the onChange in the selector will actually have the page render according to favorite status
   // can chain methods, so an additional variable for filter was unnecessary
@@ -50,16 +47,12 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
     <>
       <FilterContext.Provider value={{ filters, handleFilterChange }}>
         <CharacterListFilters
-          fav={fav}
-          handleSelectFavChange={handleSelectFavChange}
           // filters={filters}
           // handleFilterChange={handleFilterChange}
           FilterContext={FilterContext}
         />
         <div className="character-container">
-          {filters.charClass || filters.species === "all" ? data.map((c) => (
-              <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
-            )) : filteredCharacters.map((c) => (
+          {filteredCharacters.map((c) => (
             <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
           ))}
         </div>
@@ -83,4 +76,16 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
                   {filteredCharacters.map((c) => (
             <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
           ))}
+
+          
+*/
+
+/*
+        <div className="character-container">
+          {(filters.charClass === "all" || filters.species === "all" || filters.favorites === "all") ? data.map((c) => (
+              <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
+            )) : filteredCharacters.map((c) => (
+            <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
+          ))}
+        </div>
 */

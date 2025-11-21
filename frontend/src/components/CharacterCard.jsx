@@ -15,7 +15,8 @@ export default function CharacterCard({ data, addToFaves }) {
           <span className="card-text">Species:</span> {data.race}
         </li>
         <li>
-          <span className="card-text">Background:</span> {data.background}
+          {/* {data.background && <span className="card-text">Background:</span> {data.background}} */}
+         
         </li>
       </ul>
       <div className="character-card-btns">

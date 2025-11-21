@@ -21,7 +21,6 @@ function App() {
   const [characters, setCharacters] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [favorite, setFavorite] = useState("all");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -91,8 +90,6 @@ function App() {
             <CharacterList
               data={characters}
               addToFaves={toggleFavorite}
-              fav={favorite}
-              setFav={setFavorite}
             />
           }
         />
