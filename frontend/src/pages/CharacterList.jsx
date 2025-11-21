@@ -50,6 +50,8 @@ export default function CharacterList({ data, addToFaves }) {
         handleFilterChange={handleFilterChange}
       />
       <div className="character-container">
+        {/* filteredCharacters is an array so if no character matches the filtered critera,
+        then the array is empty[] */}
         {filteredCharacters.length === 0 ? (
           <p>No character currently matches that criteria.</p>
         ) : (
@@ -64,6 +66,7 @@ export default function CharacterList({ data, addToFaves }) {
 
 /*
 don't ask what i was thinking here, absolutely wild
+i forgor filteredShips is an ACTUAL array
        {filteredCharacters.map((c) => {
         if (c.charClass !== filters.charClass || c.race !== filters.species) {
           return <p key={c._id}>No character currently matches that criteria.</p>
