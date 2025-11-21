@@ -6,7 +6,7 @@ export default function PromptUser({
   return (
     <div id="overlay">
       <div className="prompt-container">
-        <p>Are you sure you wish to delete {details.name}?</p>
+        <p>Are you sure you wish to delete <span className="char-delete">{details.name}</span>?</p>
         <button onClick={() => handleDeleteCharacter(details._id)}>
           Yes
         </button>{" "}

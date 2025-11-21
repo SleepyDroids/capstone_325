@@ -36,6 +36,7 @@ export default function CharacterForm() {
   const [baseInfo, setBaseInfo] = useState(initialBase);
   const [statsInfo, setStatsInfo] = useState(initialStats);
   const [notesInfo, setNotesInfo] = useState(initialNotes);
+  const [draftValues, setDraftValues] = useState({})
 
   function inputBaseInfo(inputs) {
     setBaseInfo((prev) => {

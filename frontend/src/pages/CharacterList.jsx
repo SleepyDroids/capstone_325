@@ -37,7 +37,7 @@ export default function CharacterList({ data, addToFaves }) {
       (filters.favorites === "all" || c.isFavorite === true)
     );
   });
-
+  console.log(filteredCharacters.length);
   // selector needs a string value and a state value so that the onChange in the selector will actually have the page render according to favorite status
   // can chain methods, so an additional variable for filter was unnecessary
   // now the ternary reads as --> if this selected option "favorites" is equal to the state variable, only show the filtered results
@@ -45,20 +45,36 @@ export default function CharacterList({ data, addToFaves }) {
 
   return (
     <>
-        <CharacterListFilters
-          filters={filters}
-          handleFilterChange={handleFilterChange}
-        />
-        <div className="character-container">
-          {filteredCharacters.map((c) => (
+      <CharacterListFilters
+        filters={filters}
+        handleFilterChange={handleFilterChange}
+      />
+      <div className="character-container">
+        {filteredCharacters.length === 0 ? (
+          <p>No character currently matches that criteria.</p>
+        ) : (
+          filteredCharacters.map((c) => (
             <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
-          ))}
-        </div>
+          ))
+        )}
+      </div>
     </>
   );
 }
 
 /*
+don't ask what i was thinking here, absolutely wild
+       {filteredCharacters.map((c) => {
+        if (c.charClass !== filters.charClass || c.race !== filters.species) {
+          return <p key={c._id}>No character currently matches that criteria.</p>
+        }
+         return <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
+       })}
+
+       {filteredCharacters.map((c) => (
+            <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
+          ))}
+
    {fav === "favorites"
           ? data
               .filter((c) => c.isFavorite === true)
@@ -79,4 +95,3 @@ For future reference about the useContext:
 - Since I am only sending the props one layer/component down, the Context Provider was unnecessary 
 - But good to know I can put multiple values into a context provider and then destructure it in the component that is using that context  
 */
-
