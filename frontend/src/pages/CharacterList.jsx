@@ -12,6 +12,7 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
   const [filters, setFilters] = useState({
     species: "",
     charClass: "",
+    level: ""
   });
 
   function handleFilterChange(e) {
@@ -56,7 +57,9 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
           FilterContext={FilterContext}
         />
         <div className="character-container">
-          {filteredCharacters.map((c) => (
+          {filters.charClass || filters.species === "all" ? data.map((c) => (
+              <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
+            )) : filteredCharacters.map((c) => (
             <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
           ))}
         </div>
@@ -75,4 +78,9 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
           : data.map((c) => (
               <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
             ))}
+
+
+                  {filteredCharacters.map((c) => (
+            <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
+          ))}
 */
