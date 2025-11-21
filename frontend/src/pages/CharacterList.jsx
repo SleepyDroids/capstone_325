@@ -1,8 +1,9 @@
 import CharacterCard from "../components/CharacterCard";
+import CharacterListFilters from "../components/CharacterListFilters";
 
 export default function CharacterList({ data, addToFaves, fav, setFav }) {
 
-  function handleSelectChange(e) {
+  function handleSelectFavChange(e) {
     if (e.target.value === "all") {
       setFav("all");
     } else {
@@ -17,19 +18,7 @@ export default function CharacterList({ data, addToFaves, fav, setFav }) {
 
   return (
     <>
-      <div className="filters">
-        <label htmlFor="fav-select">Sort by:</label>
-        <select
-          value={fav}
-          onChange={handleSelectChange}
-          name="favorites"
-          className="drop-down"
-          id="fav-select"
-        >
-          <option value="all">All characters</option>
-          <option value="favorites">Favorites Only</option>
-        </select>
-      </div>
+      <CharacterListFilters fav={fav} data={data} handleSelectFavChange={handleSelectFavChange} />
       <div className="character-container">
         {fav === "favorites"
           ? data
