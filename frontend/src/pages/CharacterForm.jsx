@@ -52,6 +52,8 @@ export default function CharacterForm() {
     ...initialNotes
   }
 
+  // on first time load of page or if a character was submitted, there needs to be base data inside of localStorage
+  // for useState to have default values to draw from otherwise the data returns back undefined and breaks the form
 const characterStorage = JSON.parse(
   localStorage.getItem("characterCubby") || JSON.stringify(draftCharacter)
 );
@@ -143,6 +145,7 @@ const characterStorage = JSON.parse(
     setStatsInfo(initialStats);
     setNotesInfo(initialNotes);
     localStorage.removeItem("characterCubby");
+    // after a user submits a character, clear out that character's draft so it doesn't populate the form again when they go to make another character
   }
 
   return (
