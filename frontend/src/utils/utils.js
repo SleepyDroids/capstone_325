@@ -1,4 +1,5 @@
-// trying something for science don't judge me pls
+// Imports
+import { randomUsers, randomCampaigns } from "../components/data/data.js"
 
 function classImage(c) {
   switch (c) {
@@ -59,39 +60,39 @@ export function speciesFrequency(arr) {
   return count;
 }
 
-export const randomUsers = [
-  {
-    user: "Bob",
-    username: "TheMightyBob",
-    messages: 12,
-  },
-  {
-    user: "Jimmy Pickles",
-    username: "bobscousin",
-    messages: 1,
-  },
-  {
-    user: "Bob",
-    username: "TheMightyBob",
-    messages: 231,
-  },
-  {
-    user: "Bob",
-    username: "TheMightyBob",
-    messages: 8,
-  },
-  {
-    user: "Bob",
-    username: "TheMightyBob",
-    messages: 54,
-  },
-  {
-    user: "Bob",
-    username: "TheMightyBob",
-    messages: 3,
-  },
-];
+// RANOOMIZERS
 
-const randomCampaigns = [
+export function generateRandomUser () {
 
-]
+} 
+
+function getRandomizedStats() {
+  // roll 4d6
+  const rolls = [
+    Math.floor(Math.random() * 6) + 1,
+    Math.floor(Math.random() * 6) + 1,
+    Math.floor(Math.random() * 6) + 1,
+    Math.floor(Math.random() * 6) + 1,
+  ];
+  // sort rolls from lowest to highest
+  rolls.sort((a, b) => a - b);
+  // remove the first item in the rolls array
+  rolls.shift();
+  let sum = 0;
+  // for the remaining rolls, add them together
+  rolls.forEach((roll) => (sum += roll));
+  return sum;
+}
+
+function generateStats() {
+  const statBlock = {
+    strength: getRandomizedStats(),
+    dexterity: getRandomizedStats(),
+    constitution: getRandomizedStats(),
+    intelligence: getRandomizedStats(),
+    wisdom: getRandomizedStats(),
+    charisma: getRandomizedStats(),
+  };
+
+  return statBlock;
+}
