@@ -1,7 +1,5 @@
-export default function NewStatsInfoForm({ statsInfo, inputStatsInfo, initialStats, setStatsInfo }) {
-  function resetStats() {
-    setStatsInfo(initialStats);
-  }
+export default function NewStatsInfoForm({ statsInfo, inputStatsInfo, randomizeStats, resetStats }) {
+
 
   return (
     <div className="form-stats">
@@ -72,7 +70,7 @@ export default function NewStatsInfoForm({ statsInfo, inputStatsInfo, initialSta
         name="stat_cha"
         min="1"
       />
-      <button type="button" className="formBtn">
+      <button type="button" className="formBtn" onClick={randomizeStats}>
         Randomize Stats
       </button>
 

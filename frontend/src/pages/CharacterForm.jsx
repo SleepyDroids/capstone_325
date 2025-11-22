@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../services/character-api.js";
+import { generateStats } from "../utils/utils.js"
 
 // Form components
 import NewBaseInfoForm from "../components/forms/NewBaseInfoForm.jsx";
@@ -47,7 +48,7 @@ export default function CharacterForm() {
     localStorage.getItem("characterCubby") || JSON.stringify(draftCharacter)
   );
 
-  console.log("Checking local storage data:", characterStorage);
+
 
   const [baseInfo, setBaseInfo] = useState(characterStorage);
   const [statsInfo, setStatsInfo] = useState(characterStorage);
@@ -83,6 +84,7 @@ export default function CharacterForm() {
 
   useEffect(() => {
     localStorage.setItem("characterCubby", JSON.stringify(draftValues));
+      console.log("Checking local storage data:", characterStorage);
   }, [draftValues]);
 
   async function handleNewSubmit(e) {
@@ -131,6 +133,16 @@ export default function CharacterForm() {
     localStorage.removeItem("characterCubby");
   }
 
+  function resetStats() {
+    setStatsInfo(initialStats);
+    setDraftValues(initialStats);
+  }
+
+  function randomizeStats() {
+    setStatsInfo((prev) => { return { ...prev, ...generateStats() }});
+    setDraftValues((prev) => { return { ...prev, ...statsInfo}})
+  }
+
   return (
     <div className="form-container">
       <form onSubmit={handleNewSubmit}>
@@ -139,8 +151,8 @@ export default function CharacterForm() {
         <NewStatsInfoForm
           statsInfo={statsInfo}
           inputStatsInfo={inputStatsInfo}
-          initialStats={initialStats}
-          setStatsInfo={setStatsInfo}
+          randomizeStats={randomizeStats}
+          // resetStats={resetStats}
         />
 
         <NewNotesInfoForm

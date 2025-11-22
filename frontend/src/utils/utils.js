@@ -1,5 +1,5 @@
 // Imports
-import { randomUsers, randomCampaigns } from "../components/data/data.js"
+import { randomUsers, randomCampaigns } from "../data/data.js"
 
 function classImage(c) {
   switch (c) {
@@ -66,7 +66,7 @@ export function speciesFrequency(arr) {
 
 // } 
 
-function getRandomizedStats() {
+export function getRandomizedStats() {
   // roll 4d6
   const rolls = [
     Math.floor(Math.random() * 6) + 1,
@@ -84,15 +84,17 @@ function getRandomizedStats() {
   return sum;
 }
 
-function generateStats() {
-  const statBlock = {
-    strength: getRandomizedStats(),
-    dexterity: getRandomizedStats(),
-    constitution: getRandomizedStats(),
-    intelligence: getRandomizedStats(),
-    wisdom: getRandomizedStats(),
-    charisma: getRandomizedStats(),
+export function generateStats() {
+const randomStats = {
+    stats: {
+      str: getRandomizedStats(),
+      dex: getRandomizedStats(),
+      con: getRandomizedStats(),
+      int: getRandomizedStats(),
+      wis: getRandomizedStats(),
+      cha: getRandomizedStats(),
+    },
   };
 
-  return statBlock;
+  return randomStats;
 }
