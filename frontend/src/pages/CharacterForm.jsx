@@ -6,23 +6,9 @@ import NewBaseInfoForm from "../components/forms/NewBaseInfoForm.jsx";
 import NewStatsInfoForm from "../components/forms/NewStatsInfoForm.jsx";
 import NewNotesInfoForm from "../components/forms/NewNotesInfoForm.jsx";
 import SubmitButton from "../components/forms/SubmitButton.jsx";
-
-// const characterBaseStorage = JSON.parse(
-//   localStorage.getItem("characterCubbyBase") || "{}"
-// );
-
-// const characterStatsStorage = JSON.parse(
-//   localStorage.getItem("characterCubbyStats") || "{}"
-// );
-
-// const characterNotesStorage = JSON.parse(
-//   localStorage.getItem("characterCubbyNotes") || "{}"
-// );
-
-// console.log(localStorage)
+import ClearButton from "../components/forms/ClearButton.jsx";
 
 export default function CharacterForm() {
-
   const initialBase = {
     name: "",
     race: "",
@@ -49,16 +35,19 @@ export default function CharacterForm() {
   const draftCharacter = {
     ...initialBase,
     ...initialStats,
-    ...initialNotes
-  }
+    ...initialNotes,
+  };
 
   // on first time load of page or if a character was submitted, there needs to be base data inside of localStorage
   // for useState to have default values to draw from otherwise the data returns back undefined and breaks the form
-const characterStorage = JSON.parse(
-  localStorage.getItem("characterCubby") || JSON.stringify(draftCharacter)
-);
+  const characterStorage = JSON.parse(
+    // localStorage stores all data as strings, therefore it needs to be parsed back as an object
+    // in this instance, the draftCharacter object has to be turned into a string first before it can be reverted back to its original state
+    // and therefore be readable data to the state variables
+    localStorage.getItem("characterCubby") || JSON.stringify(draftCharacter)
+  );
 
-  console.log(characterStorage)
+  console.log(characterStorage);
 
   const [baseInfo, setBaseInfo] = useState(characterStorage);
   const [statsInfo, setStatsInfo] = useState(characterStorage);
@@ -66,7 +55,7 @@ const characterStorage = JSON.parse(
   // const [draftBaseValues, setDraftBaseValues] = useState({});
   // const [draftStatsValues, setDraftStatsValues] = useState({});
   // const [draftNotesValues, setDraftNotesValues] = useState({});
-  const [draftValues, setDraftValues] = useState(characterStorage)
+  const [draftValues, setDraftValues] = useState(characterStorage);
 
   function inputBaseInfo(inputs) {
     setBaseInfo((prev) => {
@@ -107,8 +96,6 @@ const characterStorage = JSON.parse(
     // );
   }, [draftValues]);
 
-  console.log(draftValues)
-
   async function handleNewSubmit(e) {
     e.preventDefault();
     const character = {
@@ -148,6 +135,13 @@ const characterStorage = JSON.parse(
     // after a user submits a character, clear out that character's draft so it doesn't populate the form again when they go to make another character
   }
 
+  function clearInputs() {
+    setBaseInfo(initialBase);
+    setStatsInfo(initialStats);
+    setNotesInfo(initialNotes);
+    localStorage.removeItem("characterCubby");
+  }
+
   return (
     <div className="form-container">
       <form onSubmit={handleNewSubmit}>
@@ -164,6 +158,7 @@ const characterStorage = JSON.parse(
         />
 
         <SubmitButton />
+        <ClearButton clearInputs={clearInputs} />
       </form>
     </div>
   );
