@@ -152,7 +152,7 @@ export default function CharacterForm() {
           statsInfo={statsInfo}
           inputStatsInfo={inputStatsInfo}
           randomizeStats={randomizeStats}
-          // resetStats={resetStats}
+          resetStats={resetStats}
         />
 
         <NewNotesInfoForm

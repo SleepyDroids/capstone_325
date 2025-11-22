@@ -6,6 +6,7 @@ import UserDash from "../components/user/UserDash";
 import UserStats from "../components/user/UserStats";
 import UserFavorites from "../components/user/UserFavorites";
 import UserCampaigns from "../components/user/UserCampaigns";
+import UserComments from "../components/user/UserComments";
 
 export default function Profile({ data }) {
   return (
@@ -16,7 +17,8 @@ export default function Profile({ data }) {
         <UserFavorites data={data} filler={filler} />
         <UserStats data={data} />
       </div>
-      <UserCampaigns />
+      <UserCampaigns /> 
+      <UserComments />
     </div>
   );
 }
