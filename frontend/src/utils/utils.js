@@ -62,9 +62,9 @@ export function speciesFrequency(arr) {
 
 // RANOOMIZERS
 
-export function generateRandomUser () {
+// export function generateRandomUser () {
 
-} 
+// } 
 
 function getRandomizedStats() {
   // roll 4d6
