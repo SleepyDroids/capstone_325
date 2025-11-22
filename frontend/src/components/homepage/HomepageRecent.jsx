@@ -1,7 +1,15 @@
-export default function HomepageRecent({ data }) {
+export default function HomepageRecent({ data, reload, setReload }) {
+
+    // if (data !== reload) {
+    //     setReload(data);
+    // }
+
+    // console.log(reload);
+
   return (
     <div className="homepage-recent">
-      {data.map((c) => {
+        
+      {data.slice(-5).map((c) => {
         return (
           <div className="recent-tiny" key={c._id}>
             <img src={null} alt={c.name} />
