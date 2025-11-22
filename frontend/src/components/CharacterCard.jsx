@@ -1,16 +1,16 @@
 import avatar6 from "../assets/avatars/6.png";
 import { Link } from "react-router";
 
-import { Tooltip } from 'react-tooltip'
+import { Tooltip } from "react-tooltip";
 
 export default function CharacterCard({ data, addToFaves }) {
   return (
     <div className="character-card">
       <h2>{data.name}</h2>
       <a data-tooltip-id="stats-tooltip" data-tooltip-content={`Level: ${data.level}`}>
-      <img src={avatar6} alt={`Portrait image of ${data.name}`} />
+        <img src={avatar6} alt={`Portrait image of ${data.name}`} />
       </a>
-      <Tooltip id="stats-tooltip" />
+      <Tooltip id="stats-tooltip"  />
       <ul>
         <li>
           <span className="card-text">Class:</span> {data.charClass}
@@ -37,3 +37,15 @@ export default function CharacterCard({ data, addToFaves }) {
     </div>
   );
 }
+
+/*
+       <strong>Level: </strong> {data.level}
+        <p>
+          <strong>Strength:</strong> {data.stats.str} <br />
+          <strong>Dexterity:</strong> {data.stats.dex} <br />
+          <strong>Constitution:</strong> {data.stats.con} <br />
+          <strong>Intelligence:</strong> {data.stats.int} <br />
+          <strong>Wisdom:</strong> {data.stats.wis} <br />
+          <strong>Charisma:</strong> {data.stats.cha} <br />
+        </p>
+*/

@@ -47,14 +47,11 @@ export default function CharacterForm() {
     localStorage.getItem("characterCubby") || JSON.stringify(draftCharacter)
   );
 
-  console.log(characterStorage);
+  console.log("Checking local storage data:", characterStorage);
 
   const [baseInfo, setBaseInfo] = useState(characterStorage);
   const [statsInfo, setStatsInfo] = useState(characterStorage);
   const [notesInfo, setNotesInfo] = useState(characterStorage);
-  // const [draftBaseValues, setDraftBaseValues] = useState({});
-  // const [draftStatsValues, setDraftStatsValues] = useState({});
-  // const [draftNotesValues, setDraftNotesValues] = useState({});
   const [draftValues, setDraftValues] = useState(characterStorage);
 
   function inputBaseInfo(inputs) {
@@ -86,14 +83,6 @@ export default function CharacterForm() {
 
   useEffect(() => {
     localStorage.setItem("characterCubby", JSON.stringify(draftValues));
-    // localStorage.setItem(
-    //   "characterCubbyStats",
-    //   JSON.stringify(draftStatsValues.stats)
-    // );
-    // localStorage.setItem(
-    //   "characterCubbyNotes",
-    //   JSON.stringify(draftNotesValues)
-    // );
   }, [draftValues]);
 
   async function handleNewSubmit(e) {
@@ -150,6 +139,8 @@ export default function CharacterForm() {
         <NewStatsInfoForm
           statsInfo={statsInfo}
           inputStatsInfo={inputStatsInfo}
+          initialStats={initialStats}
+          setStatsInfo={setStatsInfo}
         />
 
         <NewNotesInfoForm
