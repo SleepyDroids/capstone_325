@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <div className="nav-bar">
       <div className="nav-title">
-        <h1>Cool logo for character cubby? </h1>
+        <h1>Character Cubby</h1>
       </div>
       <div className="nav-status">
         <p>
