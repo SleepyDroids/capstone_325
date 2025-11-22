@@ -7,18 +7,96 @@
   width: 100%;
   max-width: 1200px;
   padding: 2rem 1.5rem 3rem;
+
+  /* Global color variables in case I feel like changing the palette later */
+  --cc-bg: #f5ecd4;
+  --cc-text: #2d1b0f;
+  --cc-nav-bg: #2d1b0f;
+  --cc-nav-text: #f5ecd4;
+  --cc-nav-muted: #d4c2a0;
+  --cc-nav-link-hover: #ffd27f;
 }
 
 body {
   margin: 0;
   padding: 0;
-  padding-left: 240px;
+  padding-top: 80px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  background: #f5ecd4;
-  color: #2d1b0f;
+  background: var(--cc-bg);
+  color: var(--cc-text);
   font-family: "Georgia", "Times New Roman", serif;
+}
+
+/* **** NAVIGATION BAR **** */
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background: var(--cc-nav-bg);
+  color: var(--cc-nav-text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  z-index: 100;
+}
+
+.nav-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.nav-brand h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.nav-status {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--cc-nav-muted);
+}
+
+.lil-green-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 0.35rem;
+  border-radius: 50%;
+  background: #3bd671;
+  box-shadow: 0 0 6px rgba(59, 214, 113, 0.8);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  color: var(--cc-nav-text);
+  text-decoration: none;
+}
+
+.nav-sign-out {
+  font-size: 0.9rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50%;
+  border: 1px solid var(--cc-nav-muted);
+  background: transparent;
+  color: var(--cc-nav-text);
+  cursor: pointer;
 }
 
 #overlay {
@@ -215,7 +293,7 @@ a:hover {
 
 .favorites-tiny img {
   background: radial-gradient(circle at 30% 20%, #fff7dd, #d2a45b);
-    width: 40px;
+  width: 40px;
   height: 40px;
   border-radius: 50%;
   border: 2px solid #8c5a28;
@@ -227,4 +305,3 @@ a:hover {
   margin: 0;
   font-size: 0.85rem;
 }
-

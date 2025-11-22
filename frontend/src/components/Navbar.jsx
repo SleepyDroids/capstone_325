@@ -3,21 +3,25 @@ import { Link } from "react-router";
 export default function Navbar() {
   return (
     <div className="nav-bar">
-      <h1>Cool logo for character cubby? </h1>
-      <p>Online Status lil green dot?</p>
-      <p>
-        <Link to="/">Home</Link>
-      </p>{" "}
-      <p>
-        <Link to="/profile">Profile</Link>
-      </p>{" "}
-      <p>
-        <Link to="/characters">Characters</Link>
-      </p>{" "}
-      <p>
-        <Link to="/characters/new">Create New</Link>
-      </p>
-      <p>Sign Out</p>
+      <div className="nav-title">
+        <h1>Cool logo for character cubby? </h1>
+      </div>
+      <div className="nav-status">
+        <p>
+          Online Status <span className="lil-green-dot"></span>
+        </p>
+      </div>
+
+      <nav className="nav-links">
+        <Link to="/" className="nav-link">Home</Link>
+        <Link to="/profile" className="nav-link">Profile</Link>
+        <Link to="/characters" className="nav-link">Characters</Link>
+        <Link to="/characters/new" className="nav-link">Create New</Link>
+      </nav>
+
+      <button className="nav-sign-out" type="button">
+        Signout
+      </button>
     </div>
   );
 }

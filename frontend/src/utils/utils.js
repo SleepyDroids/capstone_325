@@ -98,3 +98,4 @@ const randomStats = {
 
   return randomStats;
 }
+
