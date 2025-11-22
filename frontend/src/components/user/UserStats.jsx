@@ -1,7 +1,6 @@
 import { classFrequency, speciesFrequency } from "../../utils/utils.js";
 
 export default function UserStats({ data }) {
-  console.log(data);
 
 const topClass = classFrequency(data)
 const topSpecies = speciesFrequency(data)

@@ -35,60 +35,17 @@ body {
   opacity: 1;
 }
 
-.prompt-container, #edit-form {
-position: fixed; 
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-/* above properties will center the overlay/modal on the screen */
-border: 2px solid #8c5a28;
-width: 700px;
-max-width: 80%;
-background-color: #fff7dd;
-}
-
-/* **** NAVIGATION BAR **** */
-.nav-bar {
+.prompt-container,
+#edit-form {
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 220px;
-  background: #3c2415;
-  padding: 1.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
-  z-index: 20;
-}
-
-.nav-bar h1 {
-  font-size: 1.25rem;
-  color: #f5ecd4;
-  margin: 0 0 1rem 0;
-  /* adding space at the bottom of h1 to give some separation from the links */
-  padding-bottom: 0.8rem;
-  border-bottom: 2px solid #8c5a28;
-}
-
-.nav-bar p {
-  margin: 0;
-}
-
-.nav-bar a { 
-  text-decoration: none;
-  color: #d2a45b;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  display: block;
-  /* fills the container to make the row of the link clickable, not just the text */
-}
-
-.nav-bar a:hover {
-  background: #5a3520;
-  color: #fff7dd;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* above properties will center the overlay/modal on the screen */
+  border: 2px solid #8c5a28;
+  width: 700px;
+  max-width: 80%;
+  background-color: #fff7dd;
 }
 
 /* **** CHARACTER LIST PAGE **** */
@@ -196,8 +153,8 @@ a:hover {
   background: #fff8e7;
   padding: 1.25rem;
   border-radius: 12px;
-    border-bottom: 2px solid #b08a57;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-bottom: 2px solid #b08a57;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .user-dash img {
@@ -218,7 +175,8 @@ a:hover {
 
 .profile-middle {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  align-items: flex-start;
+  grid-template-columns: 3fr 2fr;
   /* makes favorites take up 2 parts (66%) and stats (33%) */
   gap: 1.5rem;
 }
@@ -229,8 +187,44 @@ a:hover {
   border-radius: 12px;
   border: 2px solid #b08a57;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
   display: grid;
-  grid-template-columns: repeat(auto-fill, mixmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-auto-rows: minmax(120px, auto);
   gap: 1rem;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.user-favorites .profile-text {
+  grid-column: 1 / -1;
+  margin-bottom: 0.5rem;
+}
+
+.favorites-tiny {
+  background: #f5ecd4;
+  border-radius: 10px;
+  border: 1px solid #b08a57;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.favorites-tiny img {
+  background: radial-gradient(circle at 30% 20%, #fff7dd, #d2a45b);
+    width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #8c5a28;
+  padding: 2px;
+}
+
+.favorites-tiny p {
+  line-height: 1.3;
+  margin: 0;
+  font-size: 0.85rem;
 }
 
