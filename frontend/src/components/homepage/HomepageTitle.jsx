@@ -1,6 +1,9 @@
 import { Routes, Route, useNavigate } from "react-router";
 
 export default function HomepageTitle() {
+
+    const navigate = useNavigate()
+
   return (
     <>
       <div className="main-text">
@@ -15,13 +18,13 @@ export default function HomepageTitle() {
 
       <div className="main-btns">
         <button className="mainBtn" onClick={() => navigate("/characters")}>
-          View all characters
+          Browse your party
         </button>
         <button className="mainBtn" onClick={() => navigate("/characters/new")}>
-          Create a character
+          Forge a new character
         </button>
         <button className="mainBtn" onClick={() => navigate("/profile")}>
-          View Profile
+          DM's table
         </button>
       </div>
     </>

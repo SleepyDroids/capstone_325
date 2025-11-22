@@ -7,10 +7,10 @@ export default function CharacterCard({ data, addToFaves }) {
   return (
     <div className="character-card">
       <h2>{data.name}</h2>
-      <a data-tooltip-id="stats-tooltip" data-tooltip-content={`Level: ${data.level}`}>
+      <a data-tooltip-id="level-tooltip" data-tooltip-content={`Level: ${data.level}`}>
         <img src={avatar6} alt={`Portrait image of ${data.name}`} />
       </a>
-      <Tooltip id="stats-tooltip"  />
+      <Tooltip id="level-tooltip"  />
       <ul>
         <li>
           <span className="card-text">Class:</span> {data.charClass}
