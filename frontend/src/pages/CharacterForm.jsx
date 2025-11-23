@@ -116,7 +116,7 @@ export default function CharacterForm({ data, setData }) {
       });
       const newCharacter = await response.json();
       console.log(newCharacter);
-      setData([...data, newCharacter])
+      setData((prev) => [...prev, newCharacter])
     } catch (e) {
       console.log(e);
     }
