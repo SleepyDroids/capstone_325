@@ -16,6 +16,8 @@ import CharacterForm from "./pages/CharacterForm.jsx";
 import CharacterDetails from "./pages/CharacterDetails.jsx";
 import Homepage from "./components/Homepage";
 import Profile from "./pages/Profile.jsx";
+import Loading from "./components/Loading.jsx";
+import ErrorMsg from "./components/ErrorMsg.jsx";
 
 function App() {
   const [characters, setCharacters] = useState(null);
@@ -40,14 +42,22 @@ function App() {
 
   if (isLoading) {
     return (
-      <div>
-        Loading, please wait. Will replace this later with something cleaner.
-      </div>
+      <>
+        <Header />
+        <Loading />
+        <Footer />
+      </>
     );
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return (
+      <>
+        <Header />
+        <ErrorMsg />
+        <Footer />
+      </>
+    );
   }
 
   async function toggleFavorite(id) {
@@ -78,24 +88,18 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Homepage data={characters} />} />
-        <Route
-          path="/profile"
-          element={
-            <Profile data={characters} />
-          }
-        />
+        <Route path="/profile" element={<Profile data={characters} />} />
         <Route
           path="/characters"
           element={
-            <CharacterList
-              data={characters}
-              addToFaves={toggleFavorite}
-            />
+            <CharacterList data={characters} addToFaves={toggleFavorite} />
           }
         />
         <Route
           path="/characters/details/:name"
-          element={<CharacterDetails data={characters} setData={setCharacters} />}
+          element={
+            <CharacterDetails data={characters} setData={setCharacters} />
+          }
         />
         <Route
           path="/characters/new"

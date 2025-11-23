@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../services/character-api.js";
-import { generateStats } from "../utils/utils.js"
+import { generateStats } from "../utils/utils.js";
 
 // Form components
 import NewBaseInfoForm from "../components/forms/NewBaseInfoForm.jsx";
@@ -48,8 +48,6 @@ export default function CharacterForm({ data, setData }) {
     localStorage.getItem("characterCubby") || JSON.stringify(draftCharacter)
   );
 
-
-
   const [baseInfo, setBaseInfo] = useState(characterStorage);
   const [statsInfo, setStatsInfo] = useState(characterStorage);
   const [notesInfo, setNotesInfo] = useState(characterStorage);
@@ -84,7 +82,7 @@ export default function CharacterForm({ data, setData }) {
 
   useEffect(() => {
     localStorage.setItem("characterCubby", JSON.stringify(draftValues));
-      console.log("Checking local storage data:", characterStorage);
+    console.log("Checking local storage data:", characterStorage);
   }, [draftValues]);
 
   async function handleNewSubmit(e) {
@@ -116,7 +114,7 @@ export default function CharacterForm({ data, setData }) {
       });
       const newCharacter = await response.json();
       console.log(newCharacter);
-      setData((prev) => [...prev, newCharacter])
+      setData((prev) => [...prev, newCharacter]);
     } catch (e) {
       console.log(e);
     }
@@ -144,13 +142,25 @@ export default function CharacterForm({ data, setData }) {
   }
 
   function randomizeStats() {
-    setStatsInfo((prev) => { return { ...prev, ...generateStats() }});
-    setDraftValues((prev) => { return { ...prev, ...statsInfo}})
+    setStatsInfo((prev) => {
+      return { ...prev, ...generateStats() };
+    });
+    setDraftValues((prev) => {
+      return { ...prev, ...statsInfo };
+    });
   }
 
   return (
     <div className="form-container">
-      <form onSubmit={handleNewSubmit}>
+      <div className="form-heading">
+        <h2>Forge A New Hero</h2>
+        <p>
+          Fill in the details below to give your adventurer a cozy spot in the
+          Character Cubby.
+        </p>
+      </div>
+
+      <form className="character-form" onSubmit={handleNewSubmit}>
         <NewBaseInfoForm baseInfo={baseInfo} inputBaseInfo={inputBaseInfo} />
 
         <NewStatsInfoForm
@@ -165,8 +175,10 @@ export default function CharacterForm({ data, setData }) {
           inputNotesInfo={inputNotesInfo}
         />
 
-        <SubmitButton />
-        <ClearButton clearInputs={clearInputs} />
+        <div className="form-actions">
+          <SubmitButton />
+          <ClearButton clearInputs={clearInputs} />
+        </div>
       </form>
     </div>
   );
