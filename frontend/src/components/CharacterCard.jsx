@@ -6,11 +6,16 @@ import { Tooltip } from "react-tooltip";
 export default function CharacterCard({ data, addToFaves }) {
   return (
     <div className="character-card">
-      <h2>{data.name}</h2>
-      <a data-tooltip-id="level-tooltip" data-tooltip-content={`Level: ${data.level}`}>
-        <img src={avatar6} alt={`Portrait image of ${data.name}`} />
-      </a>
-      <Tooltip id="level-tooltip"  />
+      <div className="character-card-top-section">
+        <h2>{data.name}</h2>
+        <a
+          data-tooltip-id="level-tooltip"
+          data-tooltip-content={`Level: ${data.level}`}
+        >
+          <img src={avatar6} alt={`Portrait image of ${data.name}`} />
+        </a>
+        <Tooltip id="level-tooltip" />
+      </div>
       <ul>
         <li>
           <span className="card-text">Class:</span> {data.charClass}
