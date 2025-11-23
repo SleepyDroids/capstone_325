@@ -33,6 +33,8 @@ export default function Homepage({ data }) {
   // so one API call and only on user interaction
   // no pre-loading data or a need for useEffect since I don't necessarily need the API data on mount
 
+  
+
   return (
     <main>
       <div id="container">

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -45,6 +47,17 @@
   --color-shadow-dark: rgba(0, 0, 0, 0.5);
 }
 
+/* @font-face {
+  font-family: "thewitcher";
+  src: url("https://aditibuket.s3.ap-south-1.amazonaws.com/Thewitcher-jnOj.ttf")
+    format("truetype");
+} */
+
+:is(h1, h2, h3) {
+    font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -52,7 +65,7 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  background: var(--color-bg-page);
+  /* background: var(--color-bg-page); */
   color: var(--cc---color-text-light);
   font-family: "Georgia", "Times New Roman", serif;
 }
@@ -88,6 +101,8 @@ body {
   font-size: 1.4rem;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
+   font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
 }
 
 .nav-status {
@@ -160,7 +175,7 @@ body {
 .character-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.4rem;
+  gap: 1.2rem;
   align-items: stretch;
   margin-top: 1.5rem;
   width: 100%;
@@ -198,6 +213,7 @@ body {
 }
 
 .character-card h2 {
+    font-family: "Cinzel", serif;
   margin: 0.25rem 0;
   font-size: 1.1rem;
   letter-spacing: 0.05rem;
@@ -214,7 +230,7 @@ body {
   justify-content: space-between; */
   display: flex;
   grid-template-columns: repeat(2, 1fr);
-   border-top: 2px solid var(--color-border);
+  border-top: 2px solid var(--color-border);
 }
 
 .character-card-btns button {
@@ -281,6 +297,7 @@ body {
 
 .character-card li strong {
   color: var(--color-text-light);
+  letter-spacing: -0.25rem;
 }
 
 .card-text {
