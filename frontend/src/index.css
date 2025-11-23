@@ -504,6 +504,26 @@ a:hover {
   width: 100%;
 }
 
+/* Adds custom colors when tabbing through the form */
+.char-input,
+.input-race,
+.input-class,
+.input-level,
+.input-stat,
+.input-notes {
+  outline: none;
+}
+
+.char-input:focus,
+.input-race:focus,
+.input-class:focus,
+.input-level:focus,
+.input-stat:focus,
+.input-notes:focus {
+  border-color: var(--color-accent, var(--color-secondary-light));
+  box-shadow: 0 0 0 1px var(--color-accent, var(--color-secondary-light));
+}
+
 /* Stats Inputs Layout */
 
 .form-stats {
