@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
 
 :root {
   font-synthesis: none;
@@ -54,7 +54,7 @@
 } */
 
 :is(h1, h2, h3) {
-    font-family: "Cinzel", serif;
+  font-family: "Cinzel", serif;
   font-optical-sizing: auto;
 }
 
@@ -101,7 +101,7 @@ body {
   font-size: 1.4rem;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
-   font-family: "Cinzel", serif;
+  font-family: "Cinzel", serif;
   font-optical-sizing: auto;
 }
 
@@ -150,6 +150,15 @@ body {
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.4);
+
+  /* Need to fix issue with fixed position now that the edit form is styled and bigger than the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  /* overflow on the y axis allows my form to scroll */
+  overflow-y: auto;
+  z-index: 25;
 }
 
 #overlay.active {
@@ -159,15 +168,45 @@ body {
 
 .prompt-container,
 #edit-form {
-  position: fixed;
-  top: 50%;
+  position: relative;
+  margin: 0 auto;
+  /* top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   /* above properties will center the overlay/modal on the screen */
-  border: 2px solid #8c5a28;
   width: 700px;
-  max-width: 80%;
-  background-color: #fff7dd;
+  max-width: 90%;
+}
+
+#edit-form {
+  background: var(--color-bg-card);
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border-dark);
+  box-shadow: 0 12px 32px var(--color-shadow-dark);
+  margin-top: 3.2rem;
+  padding: 2rem 1rem;
+}
+
+.form-character-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.25rem 0 0.7rem;
+}
+
+.form-character-meta-item {
+  font-size: 0.9rem;
+  color: var(--color-text-medium);
+  background: var(--color-primary);
+  padding: 0.25rem 0.7rem;
+}
+
+.form-character-meta-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-right: 0.25rem;
+  color: var(--color-text-light);
 }
 
 /* **** CHARACTER LIST PAGE **** */
@@ -213,7 +252,7 @@ body {
 }
 
 .character-card h2 {
-    font-family: "Cinzel", serif;
+  font-family: "Cinzel", serif;
   margin: 0.25rem 0;
   font-size: 1.1rem;
   letter-spacing: 0.05rem;
@@ -434,7 +473,7 @@ a:hover {
 .form-heading h2 {
   margin: 0;
   font-size: 1.6rem;
-  letter-spacing: 0.10rem;
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
   color: var(--color-text-light);
 }
@@ -451,7 +490,10 @@ a:hover {
   gap: 1.5rem;
 }
 
-.form-character, .form-level, .form-stats, .form-notes {
+.form-character,
+.form-level,
+.form-stats,
+.form-notes {
   background: var(--color-primary-light);
   border-radius: 0.75rem;
   border: 1px solid var(--color-border-dark);
@@ -467,12 +509,14 @@ a:hover {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
-  letter-spacing: 0.10rem;
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
   color: var(--color-text-light);
 }
 
-.form-character label, .form-level label, .form-stats label {
+.form-character label,
+.form-level label,
+.form-stats label {
   font-size: 0.85rem;
   color: var(--color-text-medium);
 }
@@ -486,17 +530,24 @@ a:hover {
 
 /* Input Styling */
 
-.char-input, .input-race, .input-class, .input-level, .input-stat, .input-notes {
+.char-input,
+.input-race,
+.input-class,
+.input-level,
+.input-stat,
+.input-notes {
   font-family: inherit;
   font-size: 0.9rem;
-    background: var(--color-primary);
+  background: var(--color-primary);
   color: var(--color-text-light);
   border: 1px solid var(--color-border-dark);
   border-radius: 0.5rem;
   padding: 0.5rem 0.6rem;
 }
 
-.char-input, .input-race, .input-class {
+.char-input,
+.input-race,
+.input-class {
   width: 100%;
 }
 
@@ -536,12 +587,12 @@ a:hover {
   margin: 0;
   font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.10rem;
+  letter-spacing: 0.1rem;
   color: var(--color-text-light);
 }
 
 .form-section-help {
-    margin: 0.25rem 0 0;
+  margin: 0.25rem 0 0;
   font-size: 0.8rem;
   color: var(--color-text-dark);
 }
@@ -573,7 +624,7 @@ a:hover {
   margin: 0;
   font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.10rem;
+  letter-spacing: 0.1rem;
   color: var(--color-text-light);
 }
 
@@ -592,7 +643,7 @@ a:hover {
 }
 
 .formBtn {
-   padding: 0.5rem 1.1rem;
+  padding: 0.5rem 1.1rem;
   border-radius: 999px;
   border: 1px solid var(--color-secondary-light);
   background: var(--color-secondary);
@@ -606,4 +657,16 @@ a:hover {
 .formBtn:hover {
   background: var(--color-secondary-light);
   transform: translateX(-2px);
+}
+
+.formBtn-secondary {
+  background: transparent;
+  border-color: var(--color-border-dark);
+  color: var(--color-text-medium);
+}
+
+.formBtn-secondary:hover {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  transform: translateX(0);
 }
