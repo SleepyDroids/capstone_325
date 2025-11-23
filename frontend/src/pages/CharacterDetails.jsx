@@ -21,7 +21,7 @@ export default function CharacterDetails({ data, setData }) {
     if (character) {
       setDetails(character);
     }
-  }, [details]);
+  }, [data, name]);
 
   // Edit button handler
   function toggleEditing() {
