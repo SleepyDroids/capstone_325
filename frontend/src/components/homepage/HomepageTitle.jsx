@@ -24,7 +24,7 @@ export default function HomepageTitle() {
           Forge a new character
         </button>
         <button className="mainBtn" onClick={() => navigate("/profile")}>
-          DM's table
+          Dungeon Master's Screen
         </button>
       </div>
     </>
