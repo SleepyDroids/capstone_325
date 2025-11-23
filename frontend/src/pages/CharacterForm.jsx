@@ -9,7 +9,7 @@ import NewNotesInfoForm from "../components/forms/NewNotesInfoForm.jsx";
 import SubmitButton from "../components/forms/SubmitButton.jsx";
 import ClearButton from "../components/forms/ClearButton.jsx";
 
-export default function CharacterForm() {
+export default function CharacterForm({ data, setData }) {
   const initialBase = {
     name: "",
     race: "",
@@ -116,6 +116,7 @@ export default function CharacterForm() {
       });
       const newCharacter = await response.json();
       console.log(newCharacter);
+      setData([...data, newCharacter])
     } catch (e) {
       console.log(e);
     }

@@ -100,7 +100,7 @@ function App() {
         />
         <Route
           path="/characters/new"
-          element={<CharacterForm data={characters} />}
+          element={<CharacterForm data={characters} setData={setCharacters} />}
         />
       </Routes>
       <Footer />

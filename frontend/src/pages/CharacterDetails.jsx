@@ -102,7 +102,7 @@ export default function CharacterDetails({ data, setData }) {
       });
       const deleted = data.filter((c) => c._id !== id);
       console.log(deleted);
-      // setShowConfirm(false);
+      setData(deleted);
       navigate("/characters");
     } catch (e) {
       console.log(e);
