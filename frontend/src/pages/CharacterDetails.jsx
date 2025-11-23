@@ -22,6 +22,11 @@ export default function CharacterDetails({ data, setData }) {
       setDetails(character);
     }
   }, [data, name]);
+  /*
+  Edit issue with state: I need to change my dependencies because with details it is only derived state. 
+  Data is what truly changes and I need the useEffect to run everytime data changes so it goes and .finds() the most recent version of the character based of their name.
+  I also need name because if I navigate to a different :name, the effect runs and displays the "new character" instead. 
+  */
 
   // Edit button handler
   function toggleEditing() {
@@ -76,7 +81,7 @@ export default function CharacterDetails({ data, setData }) {
       const newData = data.map((c) =>
         // Checks if characer ID matches the changed ID
         // they we want to give it the changed data (editedCharacter)
-        // give back same data but as a copied object to React reacts
+        // give back same data but as a copied object so React reacts
         c._id === details._id
           ? editedCharacter
           : { ...c, stats: { ...c.stats } }
@@ -108,6 +113,11 @@ export default function CharacterDetails({ data, setData }) {
       console.log(e);
     }
   }
+  /*
+  Delete issue with state: I am already making a shallow copy of the data using .filter() method.
+  The deleted array essentially says: "Give me a new array with every character EXCEPT THIS ONE"
+  setData(deleted) sets state to the copy with one less character in the data. 
+  */
 
   return (
     <>

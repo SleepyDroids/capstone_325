@@ -126,6 +126,10 @@ export default function CharacterForm({ data, setData }) {
     localStorage.removeItem("characterCubby");
     // after a user submits a character, clear out that character's draft so it doesn't populate the form again when they go to make another character
   }
+  /*
+  Creating a new character issue with state: I post a character successfully to the backend, but I never tell React to update the data it has. 
+  So I need to make a new copy (...) of the data and then add the newCharacter to the end of data array. 
+  */
 
   function clearInputs() {
     setBaseInfo(initialBase);

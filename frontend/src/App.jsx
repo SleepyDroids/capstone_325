@@ -21,7 +21,6 @@ function App() {
   const [characters, setCharacters] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [reload, setReload] = useState(characters)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,7 +77,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Homepage data={characters} reload={reload} setReload={setReload} />} />
+        <Route path="/" element={<Homepage data={characters} />} />
         <Route
           path="/profile"
           element={
