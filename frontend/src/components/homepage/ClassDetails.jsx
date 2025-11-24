@@ -3,9 +3,10 @@ import { Tooltip } from "react-tooltip";
 export default function ClassDetails({ classData, toggleClear }) {
   return (
     <div className="classData-details">
-      <a
+      <div
         data-tooltip-id="close-details-tooltip"
         data-tooltip-content="Click here to close details view."
+        className="classData-close-wrapper"
       >
         <button
           aria-label="Close class details."
@@ -15,7 +16,7 @@ export default function ClassDetails({ classData, toggleClear }) {
         >
           X
         </button>
-      </a>
+      </div>
       <Tooltip id="close-details-tooltip" />
       <h3>{classData.name} Quick Glance</h3>
       <strong>Name:</strong> {classData.name} <br />

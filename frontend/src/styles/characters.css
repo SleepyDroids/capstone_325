@@ -125,7 +125,7 @@
 /* **** CHARACTER DETAILS PAGE **** */
 
 .character-details-page {
-  max-width: 1000px;
+  max-width: 960px;
   margin: 2rem auto 3rem;
   padding: 0 1.5rem;
 }
@@ -140,7 +140,7 @@
 .character-portrait img {
   display: block;
   width: 100%;
-  max-width: 320px;
+  max-width: 290px;
   border-radius: 0.75rem;
   object-fit: cover;
   box-shadow: 0 8px 24px var(--color-shadow-dark);

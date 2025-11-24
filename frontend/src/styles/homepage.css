@@ -1,0 +1,131 @@
+/* top of homepage */
+.home-page {
+  max-width: 960px;
+  margin: 2.5rem auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.home-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.main-text h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+}
+
+.main-text p {
+  margin: 0.75rem auto 0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.main-btns {
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.mainBtn {
+  font-size: 0.9rem;
+  padding-inline: 1.4rem;
+}
+
+/* recent characters + available classes sections */
+.home-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.home-section {
+  background: var(--color-bg-card);
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border-dark);
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 8px 20px var(--color-shadow-dark);
+}
+
+.home-section-title {
+    margin: 0 0 1rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.10rem;
+    text-transform: uppercase;
+}
+
+/* container for recent character cards */
+.homepage-recent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.recent-tiny {
+    width: 170px;
+    background: var(--color-bg-card);
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border-dark);
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--color-shadow-dark);
+    font-size: 0.85rem;
+}
+
+.recent-tiny img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.recent-tiny p {
+    margin: 0.5rem 0.75rem 0.75rem;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.recent-tiny strong {
+    color: var (--color-bg-section);
+}
+
+/* class icons container */
+
+.class-icon-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.lore-box {
+    width: 110px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.lore-box img {
+    display: block;
+    width: 100%;
+    border-radius: 0.5rem;
+    filter: grayscale(100%);
+    transition:
+    filter 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.lore-box:hover img {
+    filter: grayscale(0);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px var(--color-shadow-dark);
+}
+
+.lore-box p {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+}

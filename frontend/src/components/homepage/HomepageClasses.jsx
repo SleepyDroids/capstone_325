@@ -19,7 +19,7 @@ export default function HomepageClasses({
 }) {
   return (
     <div className="homepage-lore">
-      <h2>Currently Available Classes</h2>
+      <h2 className="home-section-title">Currently Available Classes</h2>
 
       <div className="class-icon-container">
         <div className="lore-box">
