@@ -170,3 +170,8 @@
 .classData-close:hover {
   background: rgba(255, 255, 255, 0.08);
 }
+
+.classData-details p,
+.classData-details li {
+    line-height: 0.8;
+}
