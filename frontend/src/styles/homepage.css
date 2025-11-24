@@ -53,93 +53,120 @@
 }
 
 .home-section-title {
-    margin: 0 0 1rem;
-    font-size: 0.95rem;
-    letter-spacing: 0.10rem;
-    text-transform: uppercase;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
 }
 
 /* container for recent character cards */
 .homepage-recent {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .recent-tiny {
-    width: 170px;
-    background: var(--color-bg-card);
-    border-radius: 0.5rem;
-    border: 1px solid var(--color-border-dark);
-    overflow: hidden;
-    box-shadow: 0 4px 12px var(--color-shadow-dark);
-    font-size: 0.85rem;
+  width: 170px;
+  background: var(--color-bg-card);
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border-dark);
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--color-shadow-dark);
+  font-size: 0.85rem;
 }
 
 .recent-tiny img {
-    display: block;
-    width: 100%;
-    height: auto;
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .recent-tiny p {
-    margin: 0.5rem 0.75rem 0.75rem;
-    text-align: center;
-    line-height: 1.4;
+  margin: 0.5rem 0.75rem 0.75rem;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .recent-tiny strong {
-    color: var (--color-bg-section);
+  color: var (--color-bg-section);
 }
 
 /* class icons container */
 
 .class-icon-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .lore-box {
-    width: 110px;
-    text-align: center;
-    cursor: pointer;
+  width: 110px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .lore-box img {
-    display: block;
-    width: 100%;
-    border-radius: 0.5rem;
-    filter: grayscale(100%);
-    transition:
-    filter 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  filter: grayscale(100%);
+  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .lore-box:hover img {
-    filter: grayscale(0);
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px var(--color-shadow-dark);
+  filter: grayscale(0);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px var(--color-shadow-dark);
 }
 
 .lore-box p {
-    margin-top: 0.4rem;
-    font-size: 0.9rem;
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
 }
 
 /* class details modal card */
 .classData-card {
-    background: var(--color-bg-card);
-    border-radius: 0.75rem;
-    border: 1px solid var(--color-border-dark);
+  background: var(--color-bg-card);
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border-dark);
   box-shadow: 0 12px 32px var(--color-shadow-dark);
   padding: 1.25rem 1.5rem;
 }
 
+.classData-details h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-right: 2.5rem;
+    /* tweaked positioning for x button but still seems a bit off */
+}
+
 /* inner content area for class details */
 .classData-details {
-    position: relative;
+  position: relative;
+  /* establishes a positioning context for the x buttom */
+}
+
+/* positions x button in top right corner */
+.classData-close-wrapper {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+}
+
+.classData-close {
+  background: transparent;
+  border: none;
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.classData-close:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
