@@ -32,7 +32,7 @@
 }
 
 .character-card-top-section {
-  background: (--color-bg-section);
+  background: var(--color-bg-section);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
