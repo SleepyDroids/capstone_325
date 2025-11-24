@@ -8,6 +8,7 @@ import HomepageClasses from "./homepage/HomepageClasses";
 import ClassDetails from "./homepage/ClassDetails";
 
 const CLASS_API_URL = "https://www.dnd5eapi.co/api/2014/classes";
+const SPECIES_API_URL = "https://www.dnd5eapi.co/api/2014/races";
 
 export default function Homepage({ data }) {
   const [classData, setClassData] = useState(null);
@@ -24,18 +25,37 @@ export default function Homepage({ data }) {
     }
   }
 
+    async function getSpeciesData(species) {
+    try {
+      const response = await fetch(`${SPECIES_API_URL}/${species}`);
+      const result = await response.json();
+      setSpeciesData(await result);
+      return speciesData;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   async function handleClassDataCall(charClass) {
     console.log("clicked!!");
     getClassData(charClass);
     return classData;
   }
+  
+  async function handleSpeciesDataCall(species) {
+    console.log("clicked!!");
+    getSpeciesData(species);
+    return speciesData;
+  }
 
   function toggleClear() {
-    console.log("class data reset");
-    setClassData(null)
+    console.log("class and species data reset");
+    setClassData(null);
+    setSpeciesData(null);
   }
 
   console.log(classData);
+  console.log(speciesData);
 
   // can make API calls using an event handler so can use onClick to fire off the call instead of calling all the classes all at once
   // especially since I don't have a need to do so
@@ -48,10 +68,16 @@ export default function Homepage({ data }) {
       <div id="container">
         <HomepageTitle />
         <HomepageRecent data={data} />
-  
-        <HomepageClasses classData={classData} toggleClear={toggleClear} callClassData={handleClassDataCall} />
-              {/* <HomepageSpecies /> */}
-        {classData && <ClassDetails classData={classData} toggleClear={toggleClear} />}
+
+        <HomepageClasses
+          classData={classData}
+          toggleClear={toggleClear}
+          callClassData={handleClassDataCall}
+        />
+        {/* <HomepageSpecies /> */}
+        {classData && (
+          <ClassDetails classData={classData} toggleClear={toggleClear} />
+        )}
       </div>
     </main>
   );
