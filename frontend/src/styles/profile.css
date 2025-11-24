@@ -1,0 +1,101 @@
+/* **** PROFILE PAGE **** */
+
+.profile-container {
+  width: 100%;
+  max-width: 1000px;
+  /* limits the width for readability on larger screens */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile-container h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #3c2415;
+  border-bottom: 2px solid #b08a57;
+  padding-bottom: 0.75rem;
+}
+
+.user-dash {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: #fff8e7;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border-bottom: 2px solid #b08a57;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user-dash img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #8c5a28;
+  object-fit: cover;
+}
+
+.user-dash ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.profile-middle {
+  display: grid;
+  align-items: flex-start;
+  grid-template-columns: 3fr 2fr;
+  /* makes favorites take up 2 parts (66%) and stats (33%) */
+  gap: 1.5rem;
+}
+
+.user-favorites {
+  background: #fff8e7;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 2px solid #b08a57;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-auto-rows: minmax(120px, auto);
+  gap: 1rem;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.user-favorites .profile-text {
+  grid-column: 1 / -1;
+  margin-bottom: 0.5rem;
+}
+
+.favorites-tiny {
+  background: #f5ecd4;
+  border-radius: 10px;
+  border: 1px solid #b08a57;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.favorites-tiny img {
+  background: radial-gradient(circle at 30% 20%, #fff7dd, #d2a45b);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #8c5a28;
+  padding: 2px;
+}
+
+.favorites-tiny p {
+  line-height: 1.3;
+  margin: 0;
+  font-size: 0.85rem;
+}
