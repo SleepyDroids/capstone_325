@@ -1,6 +1,12 @@
+import testPortrait from "../assets/avatars/6.png";
+
 export default function CharacterDisplay({ details }) {
   return (
     <>
+      <div className="character-portrait">
+        <img src={testPortrait} alt={`Portrait of ${details.name}`} />
+      </div>
+
       <div className="character-details">
         <h1>{details.name}</h1>
         <ul>
@@ -14,7 +20,8 @@ export default function CharacterDisplay({ details }) {
           </li>
           {details.background && (
             <li>
-              <span className="card-text">Background:</span> {details.background}
+              <span className="card-text">Background:</span>{" "}
+              {details.background}
             </li>
           )}
         </ul>

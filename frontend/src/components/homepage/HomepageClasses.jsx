@@ -12,11 +12,11 @@ import sorcerer_icon from "../../assets/classes/sorcerer-icon.jpeg"
 import warlock_icon from "../../assets/classes/warlock-icon.jpeg"
 import wizard_icon from "../../assets/classes/wizard-icon.jpeg"
 
-export default function HomepageClasses() {
+export default function HomepageClasses({ test }) {
   return (
     <div className="homepage-lore">
       <div className="lore-box">
-        <img src={barbarian_icon} alt="Barbarian Class Info" />
+        <img src={barbarian_icon} alt="Barbarian Class Info" onClick={() => test("barbarian")} />
         <p>Barbarian</p>
       </div>
 
