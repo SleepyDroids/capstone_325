@@ -1,4 +1,6 @@
-export default function UserFavorites({ filler, data }) {
+import ember_icon from "../../assets/avatars/ember.jpg"
+
+export default function UserFavorites({ data }) {
   return (
     <div className="user-favorites">
       <span className="profile-text">Your Favorites:</span>
@@ -6,7 +8,7 @@ export default function UserFavorites({ filler, data }) {
         if (c.isFavorite === true) {
           return (
             <div className="favorites-tiny" key={c._id}>
-              <img src={filler} alt={c.name} />
+              <img src={ember_icon} alt={c.name} />
               <p>
                 <strong>{c.name}</strong> <br />
                 <strong>Level:</strong> {c.level} |  
