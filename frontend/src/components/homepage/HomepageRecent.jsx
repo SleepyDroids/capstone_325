@@ -1,10 +1,7 @@
-export default function HomepageRecent({ data, reload, setReload }) {
+import camellia_placeholder from "../../assets/avatars/camellia.jpg"
 
-    // if (data !== reload) {
-    //     setReload(data);
-    // }
+export default function HomepageRecent({ data }) {
 
-    // console.log(reload);
 
   return (
     <div className="homepage-recent">
@@ -12,7 +9,7 @@ export default function HomepageRecent({ data, reload, setReload }) {
       {data.slice(-5).map((c) => {
         return (
           <div className="recent-tiny" key={c._id}>
-            <img src={null} alt={c.name} />
+            <img src={camellia_placeholder} alt={c.name} />
             <p>
               <strong>{c.name}</strong> <br />
               <strong>Level:</strong> {c.level} |<strong>Class:</strong>{" "}
