@@ -7,7 +7,7 @@ import HomepageSpecies from "./homepage/HomepageSpecies";
 import HomepageClasses from "./homepage/HomepageClasses";
 import ClassDetails from "./homepage/ClassDetails";
 
-const BASE_API_URL = "https://www.dnd5eapi.co/api/2014/classes";
+const CLASS_API_URL = "https://www.dnd5eapi.co/api/2014/classes";
 
 export default function Homepage({ data }) {
   const [classData, setClassData] = useState(null);
@@ -15,7 +15,7 @@ export default function Homepage({ data }) {
 
   async function getClassData(charClass) {
     try {
-      const response = await fetch(`${BASE_API_URL}/${charClass}`);
+      const response = await fetch(`${CLASS_API_URL}/${charClass}`);
       const result = await response.json();
       setClassData(await result);
       return classData;
@@ -48,8 +48,9 @@ export default function Homepage({ data }) {
       <div id="container">
         <HomepageTitle />
         <HomepageRecent data={data} />
-        {/* <HomepageSpecies /> */}
+  
         <HomepageClasses classData={classData} toggleClear={toggleClear} callClassData={handleClassDataCall} />
+              {/* <HomepageSpecies /> */}
         {classData && <ClassDetails classData={classData} toggleClear={toggleClear} />}
       </div>
     </main>

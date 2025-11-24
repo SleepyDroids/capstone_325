@@ -126,8 +126,8 @@ export default function CharacterDetails({ data, setData }) {
       <div className="character-details-btns">
         {details.stats && (
           <>
-            <button onClick={toggleEditing}>Edit Character</button>
-            <button onClick={() => setShowConfirm(true)}>
+            <button className="formBtn" onClick={toggleEditing}>Edit Character</button>
+            <button className="formBtn formBtn-secondary" onClick={() => setShowConfirm(true)}>
               Delete Character
             </button>
           </>

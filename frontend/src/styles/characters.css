@@ -121,3 +121,181 @@
 .card-text {
   font-weight: 700;
 }
+
+/* **** CHARACTER DETAILS PAGE **** */
+
+.character-details-page {
+  max-width: 1000px;
+  margin: 2rem auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.character-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.character-portrait img {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  box-shadow: 0 8px 24px var(--color-shadow-dark);
+}
+
+/* makes everything one column, centers character portrait */
+@media (max-width: 760px) {
+  .character-header {
+    grid-template-columns: 1fr;
+  }
+
+  .character-portrait {
+    justify-self: center;
+  }
+}
+
+.character-name {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.10rem;
+  text-transform: uppercase;
+}
+
+.character-meta-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.character-details-label {
+  background: var(--color-primary);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--color-border-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.character-stat-section {
+  margin-top: 2rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-dark);
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.character-stat-section h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.10rem;
+  text-transform: uppercase;
+}
+
+.stat-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.stat-section-one, 
+.stat-section-two {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stat-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-border-dark);
+  padding: 0.5rem 0.75rem;
+}
+
+.stat-bar-wrapper progress {
+  flex: 1;
+  width: 100%;
+  height: 0.5rem;
+  margin: 0;
+  accent-color: var(--color-secondary-dark);
+}
+
+.stat-name {
+  min-width: 5.5rem;
+  /* keeps labels aligned vertically */
+}
+
+.stat-bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.stat-progress-number {
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+/* will add custom stat bar progress colors here */
+
+.character-notes {
+  margin-top: 2rem;
+  max-width: 1000px;
+}
+
+.character-notes h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.10rem;
+}
+
+.character-notes p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.character-details-btns {
+  margin: 1.5rem auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.character-level-box {
+  margin-top: 1rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid (--color-border-dark);
+  background: var(--color-primary-light);
+  min-width: 6rem;    
+  /* keeps it from collapsing too small */
+}
+
+.character-level-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.10rem;
+  color: var(--color-text-medium);
+}
+
+.character-level-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  line-height: 1.3;
+}
+

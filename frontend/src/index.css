@@ -63,10 +63,11 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  /* background: var(--color-bg-page); */
+  background: var(--color-bg-page);
   color: var(--color-text-light);
   font-family: "Georgia", "Times New Roman", serif;
 }
+
 #overlay {
   position: fixed;
   top: 0;
