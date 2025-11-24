@@ -9,17 +9,13 @@ import HomepageClasses from "./homepage/HomepageClasses";
 const BASE_API_URL = "https://www.dnd5eapi.co/api/2014/classes";
 
 export default function Homepage({ data }) {
-  const [classData, setClassData] = useState([]);
-
-  // useEffect(() => {
-
-  // }, []);
+  const [classData, setClassData] = useState(null);
 
   async function getClassData(charClass) {
     try {
       const response = await fetch(`${BASE_API_URL}/${charClass}`);
-      const classData = await response.json();
-      setClassData(await classData);
+      const result = await response.json();
+      setClassData(await result);
       return classData;
     } catch (e) {
       console.log(e);
@@ -29,8 +25,15 @@ export default function Homepage({ data }) {
   async function handleClassDataCall(charClass) {
     console.log("clicked!!");
     getClassData(charClass);
-    console.log(classData);
+    return classData;
   }
+
+  function toggleClear() {
+    console.log("class data reset");
+    setClassData(null)
+  }
+
+  console.log(classData);
 
   // can make API calls using an event handler so can use onClick to fire off the call instead of calling all the classes all at once
   // especially since I don't have a need to do so
@@ -45,10 +48,30 @@ export default function Homepage({ data }) {
       </button>
       <div id="container">
         <HomepageTitle />
-        <HomepageRecent data={data} />
+        {/* <HomepageRecent data={data} /> */}
         {/* <HomepageSpecies /> */}
-        <HomepageClasses data={classData} />
+        {/* <HomepageClasses data={classData} /> */}
+        {classData && <TestComponent classData={classData} toggleClear={toggleClear} />}
       </div>
     </main>
   );
+}
+
+function TestComponent({ classData, toggleClear }){
+
+  return (
+    <div className="classData-details">
+      {classData.name} <br />
+      {classData.hit_die} <br />
+      {classData.subclasses.map((s) => s.name)}
+      {classData.proficiencies.map((p) => {
+        return(<ul key={p.index}>
+          <li>{p.name}</li>
+        </ul>)
+      })}
+
+      <button onClick={toggleClear}>Test Clear</button>
+    </div>
+  )
+
 }
