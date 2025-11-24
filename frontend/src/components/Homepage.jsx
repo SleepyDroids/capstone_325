@@ -5,11 +5,13 @@ import HomepageTitle from "./homepage/HomepageTitle";
 import HomepageRecent from "./homepage/HomepageRecent";
 import HomepageSpecies from "./homepage/HomepageSpecies";
 import HomepageClasses from "./homepage/HomepageClasses";
+import ClassDetails from "./homepage/ClassDetails";
 
 const BASE_API_URL = "https://www.dnd5eapi.co/api/2014/classes";
 
 export default function Homepage({ data }) {
   const [classData, setClassData] = useState(null);
+  const [speciesData, setSpeciesData] = useState(null);
 
   async function getClassData(charClass) {
     try {
@@ -54,27 +56,8 @@ export default function Homepage({ data }) {
         {/* <HomepageRecent data={data} /> */}
         {/* <HomepageSpecies /> */}
         <HomepageClasses classData={classData} toggleClear={toggleClear} callClassData={handleClassDataCall} />
-        {classData && <TestComponent classData={classData} toggleClear={toggleClear} />}
+        {classData && <ClassDetails classData={classData} toggleClear={toggleClear} />}
       </div>
     </main>
   );
-}
-
-function TestComponent({ classData, toggleClear }){
-
-  return (
-    <div className="classData-details">
-      {classData.name} <br />
-      {classData.hit_die} <br />
-      {classData.subclasses.map((s) => s.name)}
-      {classData.proficiencies.map((p) => {
-        return(<ul key={p.index}>
-          <li>{p.name}</li>
-        </ul>)
-      })}
-
-      <button onClick={toggleClear}>Test Clear</button>
-    </div>
-  )
-
 }
