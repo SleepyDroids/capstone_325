@@ -53,7 +53,7 @@ export default function Homepage({ data }) {
       </button> */}
       <div id="container">
         <HomepageTitle />
-        {/* <HomepageRecent data={data} /> */}
+        <HomepageRecent data={data} />
         {/* <HomepageSpecies /> */}
         <HomepageClasses classData={classData} toggleClear={toggleClear} callClassData={handleClassDataCall} />
         {classData && <ClassDetails classData={classData} toggleClear={toggleClear} />}

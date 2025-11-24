@@ -1,9 +1,15 @@
+import { Tooltip } from "react-tooltip";
+
 export default function NewBaseInfoForm({ inputBaseInfo, baseInfo }) {
   return (
     <>
       <div className="form-character">
         <h2>General Info</h2>
         <label htmlFor="name">Character Name:</label>
+        <a
+  data-tooltip-id="unique-name-tooltip"
+  data-tooltip-content="Character name MUST be unique."
+>
         <input
           value={baseInfo.name}
           onChange={(e) => inputBaseInfo({ name: e.target.value })}
@@ -14,6 +20,8 @@ export default function NewBaseInfoForm({ inputBaseInfo, baseInfo }) {
           autoFocus
           required
         />
+        </a>
+        <Tooltip id="unique-name-tooltip" />
         <br />
 
         <label htmlFor="race">Species:</label>
