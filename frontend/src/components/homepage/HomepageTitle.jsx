@@ -17,13 +17,13 @@ export default function HomepageTitle() {
       </div>
 
       <div className="main-btns">
-        <button className="mainBtn" onClick={() => navigate("/characters")}>
+        <button className="formBtn mainBtn" onClick={() => navigate("/characters")}>
           Browse your party
         </button>
-        <button className="mainBtn" onClick={() => navigate("/characters/new")}>
+        <button className="formBtn mainBtn" onClick={() => navigate("/characters/new")}>
           Forge a new character
         </button>
-        <button className="mainBtn" onClick={() => navigate("/profile")}>
+        <button className="formBtn mainBtn" onClick={() => navigate("/profile")}>
           Dungeon Master's Screen
         </button>
       </div>
