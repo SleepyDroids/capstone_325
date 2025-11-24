@@ -45,12 +45,6 @@ export default function Homepage({ data }) {
 
   return (
     <main>
-      {/* <button onClick={() => handleClassDataCall("rogue")}>
-        Testing class call
-      </button>
-         <button onClick={() => handleClassDataCall("druid")}>
-        Testing class call 2
-      </button> */}
       <div id="container">
         <HomepageTitle />
         <HomepageRecent data={data} />
