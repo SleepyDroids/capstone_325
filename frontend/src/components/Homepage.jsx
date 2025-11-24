@@ -89,13 +89,14 @@ export default function Homepage({ data }) {
       </section>
       {/* <HomepageSpecies /> */}
       {/* class details from external API modal */}
-      <div className="confirm-overlay">
-        <div className="classData-card">
-          {classData && (
+
+      {classData && (
+        <div className="confirm-overlay">
+          <div className="classData-card">
             <ClassDetails classData={classData} toggleClear={toggleClear} />
-          )}
+          </div>
         </div>
-      </div>
+      )}
     </main>
   );
 }

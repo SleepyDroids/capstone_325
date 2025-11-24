@@ -129,3 +129,17 @@
     margin-top: 0.4rem;
     font-size: 0.9rem;
 }
+
+/* class details modal card */
+.classData-card {
+    background: var(--color-bg-card);
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border-dark);
+  box-shadow: 0 12px 32px var(--color-shadow-dark);
+  padding: 1.25rem 1.5rem;
+}
+
+/* inner content area for class details */
+.classData-details {
+    position: relative;
+}

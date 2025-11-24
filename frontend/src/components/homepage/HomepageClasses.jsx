@@ -13,8 +13,6 @@ import warlock_icon from "../../assets/classes/warlock-icon.jpeg";
 import wizard_icon from "../../assets/classes/wizard-icon.jpeg";
 
 export default function HomepageClasses({
-  classData,
-  toggleClear,
   callClassData,
 }) {
   return (

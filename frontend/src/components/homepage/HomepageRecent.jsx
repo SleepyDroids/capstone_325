@@ -6,7 +6,7 @@ export default function HomepageRecent({ data }) {
   return (
     <div className="homepage-recent">
         
-      {data.slice(-5).map((c) => {
+      {data.slice(-6).map((c) => {
         return (
           <div className="recent-tiny" key={c._id}>
             <img src={camellia_placeholder} alt={c.name} />
