@@ -64,20 +64,37 @@ export default function Homepage({ data }) {
   // no pre-loading data or a need for useEffect since I don't necessarily need the API data on mount
 
   return (
-    <main>
-      <div id="container">
+    <main className="home-page">
+      {/* title + three main buttons */}
+      <section className="home-hero">
         <HomepageTitle />
-        <HomepageRecent data={data} />
+      </section>
 
-        <HomepageClasses
-          classData={classData}
-          toggleClear={toggleClear}
-          callClassData={handleClassDataCall}
-        />
-        {/* <HomepageSpecies /> */}
-        {classData && (
-          <ClassDetails classData={classData} toggleClear={toggleClear} />
-        )}
+      {/* recent characters + available classes */}
+      <section className="home-main">
+        <div className="home-main-grid">
+          <section className="home-section">
+            <h2 className="home-section-title">Recently Forged Heroes</h2>
+            <HomepageRecent data={data} />
+          </section>
+
+          <section className="home-section">
+            <HomepageClasses
+              classData={classData}
+              toggleClear={toggleClear}
+              callClassData={handleClassDataCall}
+            />
+          </section>
+        </div>
+      </section>
+      {/* <HomepageSpecies /> */}
+      {/* class details from external API modal */}
+      <div className="confirm-overlay">
+        <div className="classData-card">
+          {classData && (
+            <ClassDetails classData={classData} toggleClear={toggleClear} />
+          )}
+        </div>
       </div>
     </main>
   );
