@@ -1,4 +1,4 @@
-import seelah_placeholder from "../assets/avatars/seelah.jpg"
+import seelah_placeholder from "../assets/avatars/seelah.jpg";
 import { Link } from "react-router";
 
 import { Tooltip } from "react-tooltip";
@@ -12,7 +12,10 @@ export default function CharacterCard({ data, addToFaves }) {
           data-tooltip-id="level-tooltip"
           data-tooltip-content={`Level: ${data.level}`}
         >
-          <img src={seelah_placeholder} alt={`Portrait image of ${data.name}`} />
+          <img
+            src={seelah_placeholder}
+            alt={`Portrait image of ${data.name}`}
+          />
         </a>
         <Tooltip id="level-tooltip" />
       </div>

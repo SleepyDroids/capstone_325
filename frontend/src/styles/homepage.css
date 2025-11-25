@@ -137,10 +137,10 @@
 }
 
 .classData-details h3 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    padding-right: 2.5rem;
-    /* tweaked positioning for x button but still seems a bit off */
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-right: 2.5rem;
+  /* tweaked positioning for x button but still seems a bit off */
 }
 
 /* inner content area for class details */
@@ -173,5 +173,5 @@
 
 .classData-details p,
 .classData-details li {
-    line-height: 0.8;
+  line-height: 0.8;
 }
