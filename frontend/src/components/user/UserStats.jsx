@@ -13,10 +13,10 @@ const topSpecies = speciesFrequency(data)
           <span className="details-text">Total:</span> {data.length}
         </li>
         <li>
-          <span className="details-text">Most Used Class:</span> {topClass.name} ({topClass.count})
+          <span className="details-text">Most Common Class:</span> {topClass.name} ({topClass.count})
         </li>
         <li>
-          <span className="details-text">Most Used Species:</span> {topSpecies.name} ({topSpecies.count})
+          <span className="details-text">Most Common Species:</span> {topSpecies.name} ({topSpecies.count})
         </li>
       </ul>
     </div>
