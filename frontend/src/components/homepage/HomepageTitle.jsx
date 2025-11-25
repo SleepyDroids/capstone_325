@@ -9,10 +9,7 @@ export default function HomepageTitle() {
       <div className="main-text">
         <h1>Character Cubby</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
-          repudiandae eius incidunt amet atque qui nihil nesciunt doloribus,
-          excepturi dicta est a nam dolorem alias placeat mollitia, id fugiat
-          architecto?
+         Keep track of every hero, spell-slinger, and disaster bard in one cozy corner of the multiverse.
         </p>
       </div>
 
