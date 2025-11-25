@@ -12,8 +12,8 @@ export default function Footer() {
           target="_blank"
         >
           SleepyDroids
-        </a>
-        .
+        </a> &middot; 
+         &copy; WoTC &amp; Pathfinder
       </p>
     </footer>
   );
