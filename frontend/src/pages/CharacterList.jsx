@@ -65,34 +65,6 @@ export default function CharacterList({ data, addToFaves }) {
 }
 
 /*
-don't ask what i was thinking here, absolutely wild
-i forgor filteredShips is an ACTUAL array
-       {filteredCharacters.map((c) => {
-        if (c.charClass !== filters.charClass || c.race !== filters.species) {
-          return <p key={c._id}>No character currently matches that criteria.</p>
-        }
-         return <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
-       })}
-
-       {filteredCharacters.map((c) => (
-            <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
-          ))}
-
-   {fav === "favorites"
-          ? data
-              .filter((c) => c.isFavorite === true)
-              .map((c) => (
-                <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
-              ))
-          : data.map((c) => (
-              <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
-            ))}
-
-
-                  {filteredCharacters.map((c) => (
-            <CharacterCard data={c} addToFaves={addToFaves} key={c._id} />
-          ))}
-
 For future reference about the useContext: 
 - With useContext, I was creating a new context that was stored the state variable for filtered and the handler for the selectors.
 - Since I am only sending the props one layer/component down, the Context Provider was unnecessary 

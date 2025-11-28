@@ -9,7 +9,7 @@ import NewNotesInfoForm from "../components/forms/NewNotesInfoForm.jsx";
 import SubmitButton from "../components/forms/SubmitButton.jsx";
 import ClearButton from "../components/forms/ClearButton.jsx";
 
-export default function CharacterForm({ data, setData }) {
+export default function CharacterForm({ setData }) {
   const initialBase = {
     name: "",
     race: "",

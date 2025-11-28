@@ -1,5 +1,3 @@
-// images
-
 // user components
 import UserDash from "../components/user/UserDash";
 import UserStats from "../components/user/UserStats";

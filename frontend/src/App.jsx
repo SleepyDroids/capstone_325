@@ -38,7 +38,7 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(characters);
+  // console.log(characters);
 
   if (isLoading) {
     return (

@@ -37,66 +37,6 @@ export default function CharacterDisplay({ details }) {
 
       <section className="character-stat-bars">
         <h2>Current Stats</h2>
-        {/* <table className="stats-table">
-          <caption>{details.name} Stat Table</caption>
-          <thead>
-            <tr>
-              <th>Stat</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Strength</td>
-              <td>
-                {details.stats && (
-                  <span className="stat-num">{details.stats.str}</span>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td>Dexterity</td>
-              <td>
-                {details.stats && (
-                  <span className="stat-num">{details.stats.dex}</span>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td>Constitution</td>
-              <td>
-                {details.stats && (
-                  <span className="stat-num">{details.stats.con}</span>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td>Intelligence</td>
-              <td>
-                {details.stats && (
-                  <span className="stat-num">{details.stats.int}</span>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td>Wisdom</td>
-              <td>
-                {details.stats && (
-                  <span className="stat-num">{details.stats.wis}</span>
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td>Charisma</td>
-              <td>
-                {details.stats && (
-                  <span className="stat-num">{details.stats.cha}</span>
-                )}
-              </td>
-            </tr>
-          </tbody>
-        </table> */}
-
         <StatProgress details={details} />
       </section>
 

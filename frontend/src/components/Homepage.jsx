@@ -54,7 +54,6 @@ export default function Homepage({ data }) {
     // setSpeciesData(null);
   }
 
-  console.log(classData);
   // console.log(speciesData);
 
   // can make API calls using an event handler so can use onClick to fire off the call instead of calling all the classes all at once
